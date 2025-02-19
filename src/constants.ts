@@ -1,25 +1,3 @@
-// const env = "local"; // local, staging, production, 
-
-// export const CONSTANT_DATA = {
-//     // BASE_URL: "https://raffles.makeitlive.info/services",
-//     // BASE_URL: "http://128.199.164.240/services",
-//     // BASE_URL: "https://raffily.makeitlive.info/services",
-
-//     // --- local configuration ---
-//     // BASE_URL: "http://localhost:5000",
-//     // WEB_URL: "https://raffily.com"
-
-
-//     // --- staging configuration ---
-//     BASE_URL: "https://staging.raffily.com/services",
-//     WEB_URL: "https://staging.raffily.com"
-
-
-//     // --- production configuration ---
-//     // BASE_URL: "https://raffily.com/services",
-//     // WEB_URL: "https://raffily.com"
-// }
-
 
 type Environment = "local" | "staging" | "production";
 
@@ -29,7 +7,7 @@ const env = "local" as Environment; // Change to "staging" or "production" as ne
 // Use an object to map each environment to its corresponding configuration
 const ENV_CONFIG: { [key in Environment]: { BASE_URL: string; WEB_URL: string; CLIENT_ID: string } } = {
     local: {
-        BASE_URL: "http://localhost:5000",
+        BASE_URL: "https://raffily.com/services",
         WEB_URL: "https://raffily.com",
         CLIENT_ID: ""
     },
