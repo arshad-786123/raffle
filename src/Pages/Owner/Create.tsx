@@ -348,7 +348,7 @@ const Create = () => {
 
   // useEffect(() => {
   //     if (state?.item) {
-  //         const existingImages = state?.item?.images.map((image: string) => CONSTANT_DATA.BASE_URL + image);
+  //         const existingImages = state?.item?.images.map((image: string) => CONSTANT_DATA.IMAGE_BASE_URL + image);
   //         setExistingImages(existingImages);
   //         setFormData({ ...state?.item });
   //     }
@@ -405,15 +405,15 @@ const Create = () => {
   useEffect(() => {
     if (state?.item) {
       const existingImages = state?.item?.images.map(
-        (image: string) => CONSTANT_DATA.BASE_URL + image
+        (image: string) => CONSTANT_DATA.IMAGE_BASE_URL + image
       );
       const existingVideoes = state?.item?.videos.map(
-        (video: string) => CONSTANT_DATA.BASE_URL + video
+        (video: string) => CONSTANT_DATA.IMAGE_BASE_URL + video
       );
 
       setImageUrls(existingImages);
       setVideoUrls(existingVideoes)
-      setBackgroundIImageUrls(CONSTANT_DATA.BASE_URL + state?.item?.associatedLogo);
+      setBackgroundIImageUrls(CONSTANT_DATA.IMAGE_BASE_URL + state?.item?.associatedLogo);
 
       if (state?.item?.associatedLogo) {
         setImageUploaded(true);

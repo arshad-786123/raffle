@@ -525,8 +525,8 @@ const UserAccount: React.FC<UserAccountProps> = ({
     });
 
     console.log(
-        "CONSTANT_DATA?.BASE_URL + userDetails?.image",
-        CONSTANT_DATA?.BASE_URL + userDetails?.image
+        "CONSTANT_DATA?.IMAGE_BASE_URL + userDetails?.image",
+        CONSTANT_DATA?.IMAGE_BASE_URL + userDetails?.image
     );
     console.log("selectedImage", selectedImage);
 
@@ -559,7 +559,7 @@ const UserAccount: React.FC<UserAccountProps> = ({
                                         />
                                     ) : (
                                         <img
-                                            src={CONSTANT_DATA.BASE_URL + selectedImage}
+                                            src={CONSTANT_DATA.IMAGE_BASE_URL + selectedImage}
                                             alt="Selected"
                                             className="image-preview w-24 h-24 border-2 rounded-[100%] object-cover"
                                             onError={(e) => {
@@ -576,7 +576,7 @@ const UserAccount: React.FC<UserAccountProps> = ({
                                             <>
                                                 {userDetails?.image ? (
                                                     <img
-                                                        src={CONSTANT_DATA?.BASE_URL + userDetails?.image}
+                                                        src={CONSTANT_DATA?.IMAGE_BASE_URL + userDetails?.image}
                                                         alt="Selected"
                                                         className="image-preview w-24 h-24 border-2 rounded-[100%]"
                                                     />

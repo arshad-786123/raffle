@@ -152,7 +152,7 @@ const RaffleCardNew: React.FC<RaffleCardProps> = ({ item }) => {
       {/* Top Content */}
       <div className="relative">
         <img
-          src={item?.images?.[0] ? CONSTANT_DATA.BASE_URL + item.images[0] : noimage}
+          src={item?.images?.[0] ? CONSTANT_DATA.IMAGE_BASE_URL + item.images[0] : noimage}
           alt={item.raffle_name}
           className="w-full sm:h-[276px] h-[157px] object-cover sm:rounded-tl-[16px] rounded-tl-[8px] sm:rounded-tr-[16px] rounded-tr-[8px]"
           onError={(e) => {
@@ -210,9 +210,9 @@ const RaffleCardNew: React.FC<RaffleCardProps> = ({ item }) => {
         <img
           src={
             item?.owner?.image
-              ? CONSTANT_DATA.BASE_URL + item?.owner?.image
+              ? CONSTANT_DATA.IMAGE_BASE_URL + item?.owner?.image
               : item?.ownerImage
-                ? CONSTANT_DATA.BASE_URL + item?.ownerImage
+                ? CONSTANT_DATA.IMAGE_BASE_URL + item?.ownerImage
                 : noimage
           }
           alt={item?.owner?.businessName}

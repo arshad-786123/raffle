@@ -261,7 +261,7 @@ const BigGalleryCard = ({ item }: any, { i }: any) => {
             <div className="hidden lg:block bg-[#20124C] h-[850px]  rounded-xl ">
               <div className="flex items-center justify-center">
                 <img
-                  src={item ? CONSTANT_DATA.BASE_URL + item.images[0] : noimage}
+                  src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item.images[0] : noimage}
                   alt={item.raffle_name}
                   className="h-[500px] rounded-t-xl"
                   onError={(e) => {
@@ -298,7 +298,7 @@ const BigGalleryCard = ({ item }: any, { i }: any) => {
                   <img
                     src={
                       item
-                        ? CONSTANT_DATA.BASE_URL + item?.owner?.image
+                        ? CONSTANT_DATA.IMAGE_BASE_URL + item?.owner?.image
                         : noimage
                     }
                     alt={item?.owner?.businessName}
@@ -384,7 +384,7 @@ const BigGalleryCard = ({ item }: any, { i }: any) => {
         item?.raffle_status !== 3 && (
           <div className="block lg:hidden bg-[#20124C] rounded-xl w-[98%] m-auto">
             <img
-              src={item ? CONSTANT_DATA.BASE_URL + item.images[0] : noimage}
+              src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item.images[0] : noimage}
               alt={item.raffle_name}
               className="w-full h-[400px]  rounded-t-xl"
               onError={(e) => {
@@ -395,10 +395,10 @@ const BigGalleryCard = ({ item }: any, { i }: any) => {
             />
             <div className="w-[90%] m-auto text-white mt-8 pb-6 ">
               <div className="flex items-center gap-4">
-                {/* <img src={CONSTANT_DATA.BASE_URL + item?.owner?.image} className='w-12 h-12 rounded-xl' alt={item?.owner?.businessName} /> */}
+                {/* <img src={CONSTANT_DATA.IMAGE_BASE_URL + item?.owner?.image} className='w-12 h-12 rounded-xl' alt={item?.owner?.businessName} /> */}
                 <img
                   src={
-                    item ? CONSTANT_DATA.BASE_URL + item?.owner?.image : noimage
+                    item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.owner?.image : noimage
                   }
                   alt={item?.owner?.businessName}
                   style={{ height: "50px", width: "50px", borderRadius: "50%" }}

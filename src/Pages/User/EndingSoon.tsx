@@ -74,7 +74,7 @@ const EndingSoon = () => {
                                                 handleNavigate(item.uniqueID);
                                             }}
                                             src={
-                                                item ? CONSTANT_DATA.BASE_URL + item.images[0] : noimage
+                                                item ? CONSTANT_DATA.IMAGE_BASE_URL + item.images[0] : noimage
                                             }
                                             alt="raffle"
                                             className="cursor-pointer w-[100%] h-[250px] rounded-t-xl"
@@ -108,7 +108,7 @@ const EndingSoon = () => {
                                                         <img
                                                             src={
                                                                 item
-                                                                    ? CONSTANT_DATA.BASE_URL + item?.ownerImage
+                                                                    ? CONSTANT_DATA.IMAGE_BASE_URL + item?.ownerImage
                                                                     : nouserimage
                                                             }
                                                             alt={item?.owner?.businessName}
@@ -181,7 +181,7 @@ const EndingSoon = () => {
                                             onClick={() => {
                                                 handleNavigate(item.uniqueID);
                                             }}
-                                            src={CONSTANT_DATA.BASE_URL + item?.images[0]}
+                                            src={CONSTANT_DATA.IMAGE_BASE_URL + item?.images[0]}
                                             alt="asd"
                                             className="cursor-pointer w-[100%] h-[250px] rounded-t-xl"
                                         />
@@ -209,7 +209,7 @@ const EndingSoon = () => {
                                                 >
                                                     {item?.ownerImage ? (
                                                         <img
-                                                            src={CONSTANT_DATA.BASE_URL + item?.ownerImage}
+                                                            src={CONSTANT_DATA.IMAGE_BASE_URL + item?.ownerImage}
                                                             alt={item?.owner?.businessName}
                                                             style={{
                                                                 height: "50px",

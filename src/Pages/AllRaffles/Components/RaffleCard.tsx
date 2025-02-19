@@ -92,7 +92,7 @@ const RaffleCard: React.FC<RaffleCardProps> = ({ item }) => {
           <img
             src={
               item?.images?.[0]
-                ? CONSTANT_DATA.BASE_URL + item.images[0]
+                ? CONSTANT_DATA.IMAGE_BASE_URL + item.images[0]
                 : noimage
             }
             alt={item.brand}
@@ -134,7 +134,7 @@ const RaffleCard: React.FC<RaffleCardProps> = ({ item }) => {
           {/* Owner Info */}
           <div className="flex items-center gap-4 mb-6">
             <img
-              src={item ? CONSTANT_DATA.BASE_URL + item?.owner?.image : noimage}
+              src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.owner?.image : noimage}
               alt={item?.owner?.businessName}
               className="h-12 w-12 rounded-full object-cover"
               onError={(e) => {

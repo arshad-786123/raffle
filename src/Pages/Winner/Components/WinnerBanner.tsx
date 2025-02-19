@@ -82,7 +82,7 @@ const WinnerBanner = () => {
                     <img
                       key={index}
                       className="md:w-10 w-7 md:h-10 h-7 border-2 border-[#110044] rounded-full dark:border-gray-800"
-                      src={`${CONSTANT_DATA.BASE_URL}${image}`}
+                      src={`${CONSTANT_DATA.IMAGE_BASE_URL}${image}`}
                       alt={`Winner ${index}`}
                     />
                   ))}

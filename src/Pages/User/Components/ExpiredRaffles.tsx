@@ -139,7 +139,7 @@ const ExpiredRaffles = () => {
                                 <div className="bg-[#20124C] rounded-xl relative">
                                     <img
                                         onClick={() => handleNavigate(item.uniqueID)}
-                                        src={item ? CONSTANT_DATA.BASE_URL + item.images[0] : noimage}
+                                        src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item.images[0] : noimage}
                                         alt="raffle"
                                         className="cursor-pointer w-[100%] h-[250px] rounded-t-xl"
                                         onError={(e) => {
@@ -153,7 +153,7 @@ const ExpiredRaffles = () => {
                                             <div className="flex gap-2" style={{ alignItems: "center" }}>
                                                 {item?.ownerImage ? (
                                                     <img
-                                                        src={CONSTANT_DATA.BASE_URL + item?.ownerImage}
+                                                        src={CONSTANT_DATA.IMAGE_BASE_URL + item?.ownerImage}
                                                         alt={item?.owner?.businessName}
                                                         style={{ height: "50px", width: "50px", borderRadius: "50%" }}
                                                         onError={(e) => {

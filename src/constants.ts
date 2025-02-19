@@ -5,22 +5,26 @@ type Environment = "local" | "staging" | "production";
 const env = "local" as Environment; // Change to "staging" or "production" as needed
 
 // Use an object to map each environment to its corresponding configuration
-const ENV_CONFIG: { [key in Environment]: { BASE_URL: string; WEB_URL: string; CLIENT_ID: string } } = {
+const ENV_CONFIG: { [key in Environment]: {IMAGE_BASE_URL: string; BASE_URL: string; WEB_URL: string; CLIENT_ID: string } } = {
     local: {
         BASE_URL: "https://rafflebackend-production.up.railway.app/",
         WEB_URL: "https://raffily.com",
-        CLIENT_ID: ""
+        CLIENT_ID: "",
+        IMAGE_BASE_URL:"https://raffily.com/services"
+
     },
     staging: {
         BASE_URL: "https://raffstaging.makeitlive.info/services",
         WEB_URL: "https://raffstaging.makeitlive.info",
         // CLIENT_ID: "AfkKzKj5lcbqb2amgSOdyKqov4Ws1yFwFIkGI_kYQl8cR1eAooyJjmBsGZiQ4s-fhdjAU6P8n11iepTC"
-        CLIENT_ID: "AfIvyc7kn0rwBpCVnXY2DBDvF093TRL38QjrtXoGEo1D31XfJHlI34qvDmyGDlXxlKsh1dCqZaJnFqnn"
+        CLIENT_ID: "AfIvyc7kn0rwBpCVnXY2DBDvF093TRL38QjrtXoGEo1D31XfJHlI34qvDmyGDlXxlKsh1dCqZaJnFqnn",
+        IMAGE_BASE_URL:"https://raffily.com/services"
     },
     production: {
         BASE_URL: "https://raffily.com/services",
         WEB_URL: "https://raffily.com",
-        CLIENT_ID: "AfIvyc7kn0rwBpCVnXY2DBDvF093TRL38QjrtXoGEo1D31XfJHlI34qvDmyGDlXxlKsh1dCqZaJnFqnn"
+        CLIENT_ID: "AfIvyc7kn0rwBpCVnXY2DBDvF093TRL38QjrtXoGEo1D31XfJHlI34qvDmyGDlXxlKsh1dCqZaJnFqnn",
+        IMAGE_BASE_URL:"https://raffily.com/services"
     },
 };
 

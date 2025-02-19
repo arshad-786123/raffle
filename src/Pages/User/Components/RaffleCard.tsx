@@ -190,7 +190,7 @@ const UserRaffleCard = ({ item, i }: any) => {
         <img
           src={
             item
-              ? CONSTANT_DATA.BASE_URL + item?.raffleDetails?.images[0]
+              ? CONSTANT_DATA.IMAGE_BASE_URL + item?.raffleDetails?.images[0]
               : noimage
           }
           alt={item.brand}
@@ -259,7 +259,7 @@ const UserRaffleCard = ({ item, i }: any) => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 onClick={() =>
-                  navigator.clipboard.writeText(`${CONSTANT_DATA.BASE_URL}`)
+                  navigator.clipboard.writeText(`${CONSTANT_DATA.IMAGE_BASE_URL}`)
                 }
               >
                 <path
@@ -323,7 +323,7 @@ const UserRaffleCard = ({ item, i }: any) => {
               <img
                 src={
                   item
-                    ? CONSTANT_DATA.BASE_URL + item?.ownerDetails?.image
+                    ? CONSTANT_DATA.IMAGE_BASE_URL + item?.ownerDetails?.image
                     : noimage
                 }
                 alt={item?.ownerDetails?.businessName}

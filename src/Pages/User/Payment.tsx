@@ -409,7 +409,7 @@ const UserPayment = () => {
                                         userCart.map((item: any, i: any) => (
                                             <>
                                                 <div className='h-[.1px] w-full bg-[#A1A1A1] my-6'></div><div className='flex items-start gap-4 mt-4'>
-                                                    <img src={item ? CONSTANT_DATA.BASE_URL + item.images[0] : noimage} className='w-20' alt="ikea" onError={(e) => {
+                                                    <img src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item.images[0] : noimage} className='w-20' alt="ikea" onError={(e) => {
                                                         const target = e.target as HTMLImageElement;
                                                         target.onerror = null;
                                                         target.src = noimage;
@@ -477,7 +477,7 @@ const UserPayment = () => {
                                         userCart.map((item: any, i: any) => (
                                             <>
                                                 <div className='h-[.1px] w-full bg-[#A1A1A1] my-6'></div><div className='flex items-start gap-4 mt-4'>
-                                                    <img src={CONSTANT_DATA.BASE_URL + item.images[0]} className='w-20' alt="ikea" />
+                                                    <img src={CONSTANT_DATA.IMAGE_BASE_URL + item.images[0]} className='w-20' alt="ikea" />
                                                     <div>
                                                         <p>{item.raffle_name}</p>
                                                         <p>Qty: {item.qty}</p>

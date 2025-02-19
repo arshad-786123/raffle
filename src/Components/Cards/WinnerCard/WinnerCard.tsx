@@ -22,7 +22,7 @@ const WinnerCard = ({ winner }: { winner: any }) => {
           <div className="flex items-center gap-2">
             {/* <img
 
-              src={winner.user?.image ? `${CONSTANT_DATA.BASE_URL}${winner.user.image}` : noimage}
+              src={winner.user?.image ? `${CONSTANT_DATA.IMAGE_BASE_URL}${winner.user.image}` : noimage}
               alt="logo"
               className="rounded-full w-[40px] h-[40px] object-contain"
             /> */}
@@ -51,12 +51,12 @@ const WinnerCard = ({ winner }: { winner: any }) => {
           </div>
         </div>
         <div className="w-full my-1 h-[238px] relative">
-          <img src={winner?.images ? `${CONSTANT_DATA.BASE_URL}${winner.images}` : noimage} className="w-full h-full" />
+          <img src={winner?.images ? `${CONSTANT_DATA.IMAGE_BASE_URL}${winner.images}` : noimage} className="w-full h-full" />
           <Badge className="bg-raffles-blue absolute top-2 left-2">
             {formatDate(winner.cronTime)}
           </Badge>
           {/* <img
-            src={winner.user?.image ? `${CONSTANT_DATA.BASE_URL}${winner.user.image}` : noimage}
+            src={winner.user?.image ? `${CONSTANT_DATA.IMAGE_BASE_URL}${winner.user.image}` : noimage}
             alt="tailwind logo"
             className="rounded-full w-[56px] h-[56px] absolute bottom-2 left-2 border-[2px] !object-cover"
           /> */}

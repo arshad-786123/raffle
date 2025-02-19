@@ -370,7 +370,7 @@ const OwnerNavbar: React.FC<OwnerNavbarProps> = ({
     const imageSrc = profileImage
       ? profileImage.startsWith("blob")
         ? profileImage
-        : `${CONSTANT_DATA.BASE_URL}${profileImage}`
+        : `${CONSTANT_DATA.IMAGE_BASE_URL}${profileImage}`
       : localStorage.getItem("selectedImage") || null;
 
     return imageSrc ? (

@@ -544,7 +544,7 @@ const Account: React.FC<OwnerAccountProps> = ({ setSelectedImageForNavbar }) => 
                       />
                     ) : (
                       <img
-                        src={CONSTANT_DATA.BASE_URL + selectedImage}
+                        src={CONSTANT_DATA.IMAGE_BASE_URL + selectedImage}
                         alt="Selected"
                         className="image-preview w-24 h-24 border-2 rounded-[100%] object-cover"
                         onError={(e) => {

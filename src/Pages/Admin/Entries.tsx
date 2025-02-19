@@ -133,7 +133,7 @@ const AdminEntries = () => {
                                 <>
                                     <div className='hidden lg:block lg:flex items-center justify-between bg-white p-2 rounded-md mt-4'>
                                         {
-                                            item?.userProfile ? <img src={item ? CONSTANT_DATA.BASE_URL + item?.userProfile : noimage} alt={item?.businessName} style={{ height: "50px", width: "50px", borderRadius: "50%" }}
+                                            item?.userProfile ? <img src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.userProfile : noimage} alt={item?.businessName} style={{ height: "50px", width: "50px", borderRadius: "50%" }}
                                                 onError={(e) => {
                                                     const target = e.target as HTMLImageElement;
                                                     target.onerror = null;
@@ -221,7 +221,7 @@ const AdminEntries = () => {
                                     </div>
                                     <div className='block lg:hidden flex lg:items-center justify-between bg-white p-2 rounded-md mt-4'>
                                         {
-                                            item?.userProfile ? <img src={CONSTANT_DATA.BASE_URL + item?.userProfile} alt={item?.businessName} style={{ height: "50px", width: "50px", borderRadius: "50%" }} onError={(e) => {
+                                            item?.userProfile ? <img src={CONSTANT_DATA.IMAGE_BASE_URL + item?.userProfile} alt={item?.businessName} style={{ height: "50px", width: "50px", borderRadius: "50%" }} onError={(e) => {
                                                 const target = e.target as HTMLImageElement;
                                                 target.onerror = null;
                                                 target.src = noimage;

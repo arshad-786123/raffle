@@ -414,7 +414,7 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
                           className="w-full"
                           src={
                             item
-                              ? CONSTANT_DATA.BASE_URL + item.images[0]
+                              ? CONSTANT_DATA.IMAGE_BASE_URL + item.images[0]
                               : noimage
                           }
                           alt={item.title}

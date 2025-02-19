@@ -77,8 +77,8 @@ const WinnerList = () => {
       } else {
         if (type.result) {
           const imageItems = type.result.images.map((image: any) => ({
-            original: CONSTANT_DATA.BASE_URL + image,
-            thumbnail: CONSTANT_DATA.BASE_URL + image,
+            original: CONSTANT_DATA.IMAGE_BASE_URL + image,
+            thumbnail: CONSTANT_DATA.IMAGE_BASE_URL + image,
           }));
           setSelectedImage({ data: type.result?.images[0], index: 0 });
           setSelectedVideo({ data: type.result?.videos[0], index: 0 });

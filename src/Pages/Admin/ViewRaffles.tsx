@@ -79,7 +79,7 @@ const ViewRaffles = () => {
                 className="bg-[#20124C] relative rounded-md shadow-md"
               >
                 <img
-                  src={CONSTANT_DATA.BASE_URL + item.images[0]}
+                  src={CONSTANT_DATA.IMAGE_BASE_URL + item.images[0]}
                   alt={item.raffle_name}
                   className="cursor-pointer w-[100%] h-[250px] rounded-t-md object-cover"
                 />

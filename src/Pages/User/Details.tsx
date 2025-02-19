@@ -362,7 +362,7 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
 
   console.log(
     ">>>>>>>>>>>",
-    selectedImage.data ? CONSTANT_DATA.BASE_URL + selectedImage.data : noimage
+    selectedImage.data ? CONSTANT_DATA.IMAGE_BASE_URL + selectedImage.data : noimage
   );
 
   return (
@@ -376,18 +376,18 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
           property="og:description"
           content={raffleData?.raffle_description}
         />
-        <meta property="og:url" content={`${CONSTANT_DATA?.BASE_URL}/${id}`} />
+        <meta property="og:url" content={`${CONSTANT_DATA?.IMAGE_BASE_URL}/${id}`} />
         <meta
           property="og:image"
           content={
             selectedImage.data
-              ? CONSTANT_DATA.BASE_URL + selectedImage.data
+              ? CONSTANT_DATA.IMAGE_BASE_URL + selectedImage.data
               : noimage
           }
         />
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content={CONSTANT_DATA?.BASE_URL} />
+        <meta property="og:site_name" content={CONSTANT_DATA?.IMAGE_BASE_URL} />
 
         {/* Twitter Card Data */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -395,7 +395,7 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
           name="twitter:image"
           content={
             selectedImage?.data
-              ? CONSTANT_DATA.BASE_URL + selectedImage.data
+              ? CONSTANT_DATA.IMAGE_BASE_URL + selectedImage.data
               : noimage
           }
         />
@@ -417,19 +417,19 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
                   <p className="font-medium">Share on your socials:</p>
                   <div className="flex justify-center space-x-2">
                     <FacebookShareButton
-                      url={`${CONSTANT_DATA?.BASE_URL}/${id}`}
+                      url={`${CONSTANT_DATA?.IMAGE_BASE_URL}/${id}`}
                       title="Check out this raffle!"
                     >
                       <FacebookIcon size={32} round />
                     </FacebookShareButton>
-                    {/* <InstapaperShareButton url={`${CONSTANT_DATA?.BASE_URL}/${id}`}>
+                    {/* <InstapaperShareButton url={`${CONSTANT_DATA?.IMAGE_BASE_URL}/${id}`}>
                       <img
                         src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
                         alt="instapaper"
                         className="w-6 h-6"
                       />
                     </InstapaperShareButton> */}
-                    {/* <WhatsappShareButton url={`${CONSTANT_DATA?.BASE_URL}/${id}`} title="Check out this raffle!">
+                    {/* <WhatsappShareButton url={`${CONSTANT_DATA?.IMAGE_BASE_URL}/${id}`} title="Check out this raffle!">
                                             <WhatsappIcon size={32} round />
                                         </WhatsappShareButton> */}
                   </div>
@@ -444,7 +444,7 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
               {/* {selectedImage.data ? (
                                 <img
                                     className='w-[370px] h-[350px] rounded-lg'
-                                    src={selectedImage.data ? CONSTANT_DATA.BASE_URL + selectedImage.data : noimage}
+                                    src={selectedImage.data ? CONSTANT_DATA.IMAGE_BASE_URL + selectedImage.data : noimage}
                                     alt="ikea"
                                     onError={(e) => {
                                         const target = e.target as HTMLImageElement;
@@ -458,7 +458,7 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
                             ) : (
                                 <video
                                         className='w-[370px] h-[350px] rounded-lg'
-                                    src={CONSTANT_DATA.BASE_URL + selectedVideo.data}
+                                    src={CONSTANT_DATA.IMAGE_BASE_URL + selectedVideo.data}
                                     controls
                                     autoPlay
                                 />
@@ -469,7 +469,7 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
                     className="responsive-content"
                     src={
                       selectedImage.data
-                        ? CONSTANT_DATA.BASE_URL + selectedImage.data
+                        ? CONSTANT_DATA.IMAGE_BASE_URL + selectedImage.data
                         : noimage
                     }
                     alt="ikea"
@@ -485,7 +485,7 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
                 ) : (
                   <video
                     className="responsive-content"
-                    src={CONSTANT_DATA.BASE_URL + selectedVideo.data}
+                    src={CONSTANT_DATA.IMAGE_BASE_URL + selectedVideo.data}
                     controls
                     autoPlay
                   />
@@ -501,7 +501,7 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
                     }}
                     className={`w-[100px] h-[70px] rounded-lg cursor-pointer border-black object-cover ${selectedImage.index === i ? "border-2 p-1" : ""
                       }`}
-                    src={item ? CONSTANT_DATA.BASE_URL + item : noimage}
+                    src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item : noimage}
                     alt={raffleData?.raffle_name || `Raffle image ${i + 1}`}
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
@@ -518,7 +518,7 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
                     }}
                     className={`w-[100px] h-[70px] rounded-lg cursor-pointer border-black ${selectedVideo.index === i && "border-2 p-1"
                       }`}
-                    src={CONSTANT_DATA.BASE_URL + item}
+                    src={CONSTANT_DATA.IMAGE_BASE_URL + item}
                     title={raffleData?.raffle_name}
                     muted
                   />
@@ -534,7 +534,7 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
                     }}
                     className={`w-16 h-12 sm:w-24 sm:h-16 lg:w-[100px] lg:h-[70px] rounded-lg cursor-pointer border-black object-cover ${selectedImage.index === i ? "border-2 p-1" : ""
                       }`}
-                    src={item ? CONSTANT_DATA.BASE_URL + item : noimage}
+                    src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item : noimage}
                     alt={raffleData?.raffle_name || `Raffle image ${i + 1}`}
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
@@ -551,7 +551,7 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
                     }}
                     className={`w-16 h-12 sm:w-24 sm:h-16 lg:w-[100px] lg:h-[70px] rounded-lg cursor-pointer border-black ${selectedVideo.index === i && "border-2 p-1"
                       }`}
-                    src={CONSTANT_DATA.BASE_URL + item}
+                    src={CONSTANT_DATA.IMAGE_BASE_URL + item}
                     title={raffleData?.raffle_name}
                     muted
                   />
@@ -566,7 +566,7 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
                     className="w-12 h-12 rounded-xl object-cover"
                     src={
                       raffleData?.ownerDetails?.image
-                        ? `${CONSTANT_DATA.BASE_URL}${raffleData.ownerDetails.image}`
+                        ? `${CONSTANT_DATA.IMAGE_BASE_URL}${raffleData.ownerDetails.image}`
                         : noimage
                     }
                     alt={
@@ -627,7 +627,7 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
                       className="w-12 h-12 rounded-xl object-cover"
                       src={
                         raffleData?.ownerDetails?.image
-                          ? `${CONSTANT_DATA.BASE_URL}${raffleData.ownerDetails.image}`
+                          ? `${CONSTANT_DATA.IMAGE_BASE_URL}${raffleData.ownerDetails.image}`
                           : noimage
                       }
                       alt={
@@ -711,7 +711,7 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
                           className="w-12 h-12 rounded-xl object-cover flex-shrink-0"
                           src={
                             raffleData?.ownerDetails?.image
-                              ? `${CONSTANT_DATA.BASE_URL}${raffleData.ownerDetails.image}`
+                              ? `${CONSTANT_DATA.IMAGE_BASE_URL}${raffleData.ownerDetails.image}`
                               : noimage
                           }
                           alt={
@@ -748,7 +748,7 @@ const UserDetails = ({ authenticationModal, setAuthenticationModal }: any) => {
                         onClick={handleShareClick}
                       >
                         <FacebookShareButton
-                          url={`${CONSTANT_DATA?.BASE_URL}/${id}`}
+                          url={`${CONSTANT_DATA?.IMAGE_BASE_URL}/${id}`}
                           title="Check out this raffle!"
                         >
                           <FacebookIcon size={32} round />

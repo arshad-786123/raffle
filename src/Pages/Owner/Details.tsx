@@ -125,7 +125,7 @@ const Details = (props: Props) => {
                                 {selectedImage.data ? (
                                     <img
                                         className='responsive-content'
-                                        src={selectedImage.data ? CONSTANT_DATA.BASE_URL + selectedImage.data : noimage}
+                                        src={selectedImage.data ? CONSTANT_DATA.IMAGE_BASE_URL + selectedImage.data : noimage}
                                         alt="ikea"
                                         onError={(e) => {
                                             const target = e.target as HTMLImageElement;
@@ -139,7 +139,7 @@ const Details = (props: Props) => {
                                 ) : (
                                     <video
                                         className='responsive-content'
-                                        src={CONSTANT_DATA.BASE_URL + selectedVideo.data}
+                                        src={CONSTANT_DATA.IMAGE_BASE_URL + selectedVideo.data}
                                         controls
                                         autoPlay
                                     />
@@ -152,7 +152,7 @@ const Details = (props: Props) => {
                                         key={`image-${i}`}
                                         onClick={() => { handleSelectedImage(item, i) }}
                                         className={`w-[100px] h-[70px] rounded-lg cursor-pointer border-black ${selectedImage.index === i && "border-2 p-1"}`}
-                                        src={CONSTANT_DATA.BASE_URL + item}
+                                        src={CONSTANT_DATA.IMAGE_BASE_URL + item}
                                         alt={raffleData?.raffle_name}
                                     />
                                 ))}
@@ -161,7 +161,7 @@ const Details = (props: Props) => {
                                         key={`video-${i}`}
                                         onClick={() => { handleSelectedVideos(item, i) }}
                                         className={`w-[100px] h-[70px] rounded-lg cursor-pointer border-black ${selectedVideo.index === i && "border-2 p-1"}`}
-                                        src={CONSTANT_DATA.BASE_URL + item}
+                                        src={CONSTANT_DATA.IMAGE_BASE_URL + item}
                                         title={raffleData?.raffle_name}
                                         muted
                                     />

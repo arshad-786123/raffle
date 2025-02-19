@@ -144,7 +144,7 @@ const Sucess: FunctionComponent<SucessType> = ({
               src={
                 orderDetails?.raffleDetails?.length > 0 &&
                   orderDetails?.raffleDetails[0]?.images?.length > 0
-                  ? CONSTANT_DATA.BASE_URL +
+                  ? CONSTANT_DATA.IMAGE_BASE_URL +
                   orderDetails?.raffleDetails[0]?.images[0]
                   : noimage
               }
@@ -169,7 +169,7 @@ const Sucess: FunctionComponent<SucessType> = ({
                                     className="w-12 h-12 object-cover"
                                     loading="lazy"
                                     alt=""
-                                    src={orderDetails?.userDetails?.image ? CONSTANT_DATA.BASE_URL + orderDetails?.userDetails.image : noimage}
+                                    src={orderDetails?.userDetails?.image ? CONSTANT_DATA.IMAGE_BASE_URL + orderDetails?.userDetails.image : noimage}
                                     onError={(e) => {
                                         const target = e.target as HTMLImageElement;
                                         target.onerror = null;

@@ -226,7 +226,7 @@ const HorizontalCard: React.FC = () => {
                   <img
                     src={
                       raffle.images?.length > 0
-                        ? `${CONSTANT_DATA.BASE_URL}${raffle.images[0]}`
+                        ? `${CONSTANT_DATA.IMAGE_BASE_URL}${raffle.images[0]}`
                         : noimage
                     }
                     alt={raffle.raffle_name}
@@ -290,7 +290,7 @@ const HorizontalCard: React.FC = () => {
                   <img
                     src={
                       raffle.owner.image?.length > 0
-                        ? `${CONSTANT_DATA.BASE_URL}${raffle.owner.image}`
+                        ? `${CONSTANT_DATA.IMAGE_BASE_URL}${raffle.owner.image}`
                         : noimage
                     }
                     alt={raffle.owner.businessName}

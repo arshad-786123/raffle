@@ -222,7 +222,7 @@ const Banner = ({
         className="relative w-full min-h-[541px] lg:h-[541px] flex items-center bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(${raffleData[0]?.images?.[0]
-            ? CONSTANT_DATA.BASE_URL + raffleData[0]?.images[0]
+            ? CONSTANT_DATA.IMAGE_BASE_URL + raffleData[0]?.images[0]
             : noimage
             })`,
         }}
@@ -270,7 +270,7 @@ const Banner = ({
           </div>
         </div>
       </div> */}
-      {/* backgroundImage: `url(${raffle.images[0] ? CONSTANT_DATA.BASE_URL + raffle.images[0] : noimage})`, */}
+      {/* backgroundImage: `url(${raffle.images[0] ? CONSTANT_DATA.IMAGE_BASE_URL + raffle.images[0] : noimage})`, */}
 
       <div className="my-8">
         <Swiper
@@ -304,7 +304,7 @@ const Banner = ({
                   <div
                     className="relative w-full min-h-[541px] lg:h-[541px] flex items-center bg-cover bg-center bg-no-repeat"
                     style={{
-                      backgroundImage: `url(${raffle.bannerImage ? CONSTANT_DATA.BASE_URL + raffle?.bannerImage : BannerImage})`,
+                      backgroundImage: `url(${raffle.bannerImage ? CONSTANT_DATA.IMAGE_BASE_URL + raffle?.bannerImage : BannerImage})`,
                       // backgroundPosition: window.innerWidth < 1024 ? 'right' : 'center',
                     }}
                   >

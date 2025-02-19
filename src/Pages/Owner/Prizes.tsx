@@ -180,7 +180,7 @@ const Prizes = () => {
                               <img
                                 src={
                                   item
-                                    ? CONSTANT_DATA.BASE_URL + item?.user?.image
+                                    ? CONSTANT_DATA.IMAGE_BASE_URL + item?.user?.image
                                     : noimage
                                 }
                                 alt={item?.user?.firstname}

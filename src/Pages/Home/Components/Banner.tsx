@@ -156,13 +156,13 @@ const Banner = ({
                 //   <div className="relative z-10 text-white flex flex-wrap lg:flex-nowrap justify-between items-center overflow-hidden pl-0  ">
 
                 //     <img
-                //       src={raffle.bannerImage ? CONSTANT_DATA.BASE_URL + raffle.bannerImage : BannerImage}
+                //       src={raffle.bannerImage ? CONSTANT_DATA.IMAGE_BASE_URL + raffle.bannerImage : BannerImage}
                 //       alt="Banner"
                 //       className="w-full object-cover z-0 hidden lg:block md:block h-[700px]"
                 //     />
                 //     <div className="w-full h-[auto] lg:hidden md:hidden">
                 //       <img
-                //         src={raffle.bannerImage ? CONSTANT_DATA.BASE_URL + raffle?.bannerImage : BannerImage}
+                //         src={raffle.bannerImage ? CONSTANT_DATA.IMAGE_BASE_URL + raffle?.bannerImage : BannerImage}
                 //         alt="Banner"
                 //         className="w-full h-[auto] object-cover"
                 //       />
@@ -245,7 +245,7 @@ const Banner = ({
                 //               In association with
                 //             </p>
                 //             <img
-                //               src={raffle.associatedLogo ? CONSTANT_DATA.BASE_URL + raffle?.associatedLogo : Brand}
+                //               src={raffle.associatedLogo ? CONSTANT_DATA.IMAGE_BASE_URL + raffle?.associatedLogo : Brand}
                 //               alt="brand"
                 //               width={287}
                 //               height={35}
@@ -261,8 +261,8 @@ const Banner = ({
                 <SwiperSlide key={raffle._id}>
                   <HeroSection
                     leftImage={image}
-                    rightImage={raffle.bannerImage ? CONSTANT_DATA.BASE_URL + raffle.bannerImage : BannerImage}
-                    mobileImage={raffle.bannerImage ? CONSTANT_DATA.BASE_URL + raffle.bannerImage : BannerImage}
+                    rightImage={raffle.bannerImage ? CONSTANT_DATA.IMAGE_BASE_URL + raffle.bannerImage : BannerImage}
+                    mobileImage={raffle.bannerImage ? CONSTANT_DATA.IMAGE_BASE_URL + raffle.bannerImage : BannerImage}
                   >
                     <div className="flex flex-col w-full lg:w-[53%] h-auto lg:h-full lg:justify-center ">
                       <h1
@@ -336,7 +336,7 @@ const Banner = ({
                             In association with
                           </p>
                           <img
-                            src={raffle.associatedLogo ? CONSTANT_DATA.BASE_URL + raffle?.associatedLogo : Brand}
+                            src={raffle.associatedLogo ? CONSTANT_DATA.IMAGE_BASE_URL + raffle?.associatedLogo : Brand}
                             alt="brand"
                             width={287}
                             height={35}

@@ -169,13 +169,13 @@ const RaffleCard = ({ item, raffleType }: any, i: any) => {
   return (
     <div key={i} className="keen-slider__slide ">
       <div className="bg-[#20124C]  rounded-xl relative">
-        {/* <img src={CONSTANT_DATA.BASE_URL+item.images[0]} alt="asd" className='w-full' /> */}
+        {/* <img src={CONSTANT_DATA.IMAGE_BASE_URL+item.images[0]} alt="asd" className='w-full' /> */}
 
         <img
           onClick={() => {
             handleNavigate(item.uniqueID);
           }}
-          src={item ? CONSTANT_DATA.BASE_URL + item.images[0] : noimage}
+          src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item.images[0] : noimage}
           alt="asd"
           className="cursor-pointer w-[100%] h-[250px] rounded-t-xl"
           onError={(e) => {
@@ -340,7 +340,7 @@ const RaffleCard = ({ item, raffleType }: any, i: any) => {
                 <img
                   src={
                     item
-                      ? CONSTANT_DATA.BASE_URL + item?.owner?.image
+                      ? CONSTANT_DATA.IMAGE_BASE_URL + item?.owner?.image
                       : nouserimage
                   }
                   alt={item?.owner?.businessName}

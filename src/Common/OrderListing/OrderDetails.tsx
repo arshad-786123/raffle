@@ -80,7 +80,7 @@ const OrderDetails: React.FC = () => {
                 merchantsData?.purchases?.map((prize: any, index: any) => (
                     <div key={index} className='hidden lg:block lg:flex items-center justify-between bg-white p-2 rounded-md mt-4'>
                         {
-                            prize?.image ? <img src={prize?.image ? CONSTANT_DATA.BASE_URL + prize?.image : noimage} alt={merchantsData?.userID?.firstname} style={{ height: "50px", width: "50px", borderRadius: "50%" }}
+                            prize?.image ? <img src={prize?.image ? CONSTANT_DATA.IMAGE_BASE_URL + prize?.image : noimage} alt={merchantsData?.userID?.firstname} style={{ height: "50px", width: "50px", borderRadius: "50%" }}
                                 onError={(e) => {
                                     const target = e.target as HTMLImageElement;
                                     target.onerror = null;
@@ -132,7 +132,7 @@ const OrderDetails: React.FC = () => {
                 merchantsData?.purchases?.map((prize: any, index: any) => (
                     <div key={index} className='block lg:hidden flex lg:items-center justify-between bg-white p-2 rounded-md mt-4'>
                         {
-                            prize?.image ? <img src={prize?.image ? CONSTANT_DATA.BASE_URL + prize?.image : noimage} alt={merchantsData?.userID?.firstname} style={{ height: "50px", width: "50px", borderRadius: "50%" }}
+                            prize?.image ? <img src={prize?.image ? CONSTANT_DATA.IMAGE_BASE_URL + prize?.image : noimage} alt={merchantsData?.userID?.firstname} style={{ height: "50px", width: "50px", borderRadius: "50%" }}
                                 onError={(e) => {
                                     const target = e.target as HTMLImageElement;
                                     target.onerror = null;

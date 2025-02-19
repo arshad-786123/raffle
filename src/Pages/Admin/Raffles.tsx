@@ -270,7 +270,7 @@ const AdminRaffles = () => {
                                         {
                                             item?.images[0] ?
                                                 <img
-                                                    src={item ? CONSTANT_DATA.BASE_URL + item?.images[0] : noimage}
+                                                    src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.images[0] : noimage}
                                                     alt={item.brand}
                                                     className='w-full h-[300px] rounded-t-xl object-cover'
                                                     style={{ borderRadius: "50%", height: "50px", width: "50px" }}
@@ -358,7 +358,7 @@ const AdminRaffles = () => {
                                         {
                                             item?.images[0] ?
                                                 <img
-                                                    src={item ? CONSTANT_DATA.BASE_URL + item?.images[0] : noimage}
+                                                    src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.images[0] : noimage}
                                                     alt={item.brand}
                                                     className='w-full h-[300px] rounded-t-xl object-cover'
                                                     style={{ borderRadius: "50%", height: "50px", width: "50px" }}
@@ -444,7 +444,7 @@ const AdminRaffles = () => {
                                         {
                                             item?.images[0] ?
                                                 <img
-                                                    src={item ? CONSTANT_DATA.BASE_URL + item?.images[0] : noimage}
+                                                    src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.images[0] : noimage}
                                                     alt={item.brand}
                                                     className='w-full h-[300px] rounded-t-xl object-cover'
                                                     style={{ borderRadius: "50%", height: "50px", width: "50px" }}
@@ -534,7 +534,7 @@ const AdminRaffles = () => {
                                         {
                                             item?.images[0] ?
                                                 <img
-                                                    src={item ? CONSTANT_DATA.BASE_URL + item?.images[0] : noimage}
+                                                    src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.images[0] : noimage}
                                                     alt={item.brand}
                                                     className='w-full h-[300px] rounded-t-xl object-cover'
                                                     style={{ borderRadius: "50%", height: "50px", width: "50px" }}
@@ -625,7 +625,7 @@ const AdminRaffles = () => {
                                         {
                                             item?.images[0] ?
                                                 <img
-                                                    src={item ? CONSTANT_DATA.BASE_URL + item?.images[0] : noimage}
+                                                    src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.images[0] : noimage}
                                                     alt={item.brand}
                                                     className='w-full h-[300px] rounded-t-xl object-cover'
                                                     style={{ borderRadius: "50%", height: "50px", width: "50px" }}
@@ -777,7 +777,7 @@ const AdminRaffles = () => {
                                                 {
                                                     item?.images[0] ?
                                                         <img
-                                                            src={item ? CONSTANT_DATA.BASE_URL + item?.images[0] : noimage}
+                                                            src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.images[0] : noimage}
                                                             alt={item.brand}
                                                             className='w-full h-[300px] rounded-t-xl object-cover'
                                                             style={{ borderRadius: "50%", height: "50px", width: "50px" }}
@@ -894,7 +894,7 @@ const AdminRaffles = () => {
                                                 {
                                                     item?.images[0] ?
                                                         <img
-                                                            src={item ? CONSTANT_DATA.BASE_URL + item?.images[0] : noimage}
+                                                            src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.images[0] : noimage}
                                                             alt={item.brand}
                                                             className='w-full h-[300px] rounded-t-xl object-cover'
                                                             style={{ borderRadius: "50%", height: "50px", width: "50px" }}
@@ -989,7 +989,7 @@ const AdminRaffles = () => {
                                                 {
                                                     item?.images[0] ?
                                                         <img
-                                                            src={item ? CONSTANT_DATA.BASE_URL + item?.images[0] : noimage}
+                                                            src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.images[0] : noimage}
                                                             alt={item.brand}
                                                             className='w-full h-[300px] rounded-t-xl object-cover'
                                                             style={{ borderRadius: "50%", height: "50px", width: "50px" }}
@@ -1088,7 +1088,7 @@ const AdminRaffles = () => {
                                                 {
                                                     item?.images[0] ?
                                                         <img
-                                                            src={item ? CONSTANT_DATA.BASE_URL + item?.images[0] : noimage}
+                                                            src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.images[0] : noimage}
                                                             alt={item.brand}
                                                             className='w-full h-[300px] rounded-t-xl object-cover'
                                                             style={{ borderRadius: "50%", height: "50px", width: "50px" }}
@@ -1186,7 +1186,7 @@ const AdminRaffles = () => {
                                                 {
                                                     item?.images[0] ?
                                                         <img
-                                                            src={item ? CONSTANT_DATA.BASE_URL + item?.images[0] : noimage}
+                                                            src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.images[0] : noimage}
                                                             alt={item.brand}
                                                             className='w-full h-[300px] rounded-t-xl object-cover'
                                                             style={{ borderRadius: "50%", height: "50px", width: "50px" }}

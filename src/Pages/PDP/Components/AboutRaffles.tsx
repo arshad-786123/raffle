@@ -126,12 +126,12 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
       } else {
         if (type.result) {
           const imageItems = type.result.images.map((image: any) => ({
-            original: CONSTANT_DATA.BASE_URL + image,
-            thumbnail: CONSTANT_DATA.BASE_URL + image,
+            original: CONSTANT_DATA.IMAGE_BASE_URL + image,
+            thumbnail: CONSTANT_DATA.IMAGE_BASE_URL + image,
           }));
           const videoItems = type.result.videos.map((video: any) => ({
-            original: CONSTANT_DATA.BASE_URL + video,
-            thumbnail: CONSTANT_DATA.BASE_URL + video,
+            original: CONSTANT_DATA.IMAGE_BASE_URL + video,
+            thumbnail: CONSTANT_DATA.IMAGE_BASE_URL + video,
           }));
           const mediaData = [...imageItems, ...videoItems];
           console.log("videoitems:", videoItems);
@@ -711,9 +711,9 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
         <img
           src={
             raffleData?.ownerDetails?.image
-              ? CONSTANT_DATA.BASE_URL + raffleData?.ownerDetails?.image
+              ? CONSTANT_DATA.IMAGE_BASE_URL + raffleData?.ownerDetails?.image
               : raffleData?.ownerImage
-                ? CONSTANT_DATA.BASE_URL + raffleData?.ownerImage
+                ? CONSTANT_DATA.IMAGE_BASE_URL + raffleData?.ownerImage
                 : noimage
           }
           alt={raffleData?.owner?.businessName}
@@ -770,18 +770,18 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
           property="og:description"
           content={raffleData?.raffle_description}
         />
-        <meta property="og:url" content={`${CONSTANT_DATA?.BASE_URL}/${id}`} />
+        <meta property="og:url" content={`${CONSTANT_DATA?.IMAGE_BASE_URL}/${id}`} />
         <meta
           property="og:image"
           content={
             selectedImage.data
-              ? CONSTANT_DATA.BASE_URL + selectedImage.data
+              ? CONSTANT_DATA.IMAGE_BASE_URL + selectedImage.data
               : noimage
           }
         />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content={CONSTANT_DATA?.BASE_URL} />
+        <meta property="og:site_name" content={CONSTANT_DATA?.IMAGE_BASE_URL} />
 
         {/* Twitter Card Data */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -789,7 +789,7 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
           name="twitter:image"
           content={
             selectedImage?.data
-              ? CONSTANT_DATA.BASE_URL + selectedImage.data
+              ? CONSTANT_DATA.IMAGE_BASE_URL + selectedImage.data
               : noimage
           }
         />
@@ -872,7 +872,7 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
                   </div>
                   {/* 
                   <FacebookShareButton
-                    url={`${CONSTANT_DATA?.BASE_URL}/${id}`}
+                    url={`${CONSTANT_DATA?.IMAGE_BASE_URL}/${id}`}
                     title="Check out this raffle!"
                   >
                     <FacebookIcon size={32} round />
@@ -880,7 +880,7 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
                   <button
                     className="p-2 sm:p-3 bg-[#FF73851A] rounded flex items-center justify-center border border-raffles-pink sm:size-[46px] size-[36px]"
                     onClick={() => {
-                      const shareUrl = `${CONSTANT_DATA?.BASE_URL}/${id}`;
+                      const shareUrl = `${CONSTANT_DATA?.IMAGE_BASE_URL}/${id}`;
                       const shareTitle = "Check out this raffle!";
                       const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareTitle)}`;
 
@@ -910,7 +910,7 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
                     {isDropdownOpen && (
                       <div className="absolute right-0 mt-2 p-2 bg-white border rounded shadow-lg">
                         <FacebookShareButton
-                          url={`${CONSTANT_DATA?.BASE_URL}/${id}`}
+                          url={`${CONSTANT_DATA?.IMAGE_BASE_URL}/${id}`}
                           title="Check out this raffle!"
                         >
                           <FacebookIcon size={32} round />

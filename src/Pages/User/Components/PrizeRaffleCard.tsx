@@ -88,7 +88,7 @@ const UserPrizeRaffleCard = ({ item, i }: any) => {
     return (
         <div className='keen-slider__slide '>
             <div className='bg-[#20124C]  rounded-xl relative'>
-                <img src={item ? CONSTANT_DATA.BASE_URL + item?.images[0] : noimage} alt={item.brand} className='w-full h-[300px] rounded-t-xl'
+                <img src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.images[0] : noimage} alt={item.brand} className='w-full h-[300px] rounded-t-xl'
                     onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.onerror = null;
@@ -120,7 +120,7 @@ const UserPrizeRaffleCard = ({ item, i }: any) => {
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                                 onClick={() =>
-                                    navigator.clipboard.writeText(`${CONSTANT_DATA.BASE_URL}`)
+                                    navigator.clipboard.writeText(`${CONSTANT_DATA.IMAGE_BASE_URL}`)
                                 }
                             >
                                 <path

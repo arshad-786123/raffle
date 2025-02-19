@@ -252,15 +252,15 @@ const AdminCreate = () => {
     console.log('state?.item)', state?.item)
     useEffect(() => {
         if (state?.item) {
-            const existingImages = state?.item?.images.map((image: string) => CONSTANT_DATA.BASE_URL + image);
+            const existingImages = state?.item?.images.map((image: string) => CONSTANT_DATA.IMAGE_BASE_URL + image);
             setImageUrls(existingImages);
 
             const existingVideoes = state?.item?.videos.map(
-                (video: string) => CONSTANT_DATA.BASE_URL + video
+                (video: string) => CONSTANT_DATA.IMAGE_BASE_URL + video
             );
             setVideoUrls(existingVideoes);
-            setBackgroundIImageUrls(CONSTANT_DATA.BASE_URL + state?.item?.bannerImage);
-            setassociatedLogoImageUrls(CONSTANT_DATA.BASE_URL + state?.item?.associatedLogo);
+            setBackgroundIImageUrls(CONSTANT_DATA.IMAGE_BASE_URL + state?.item?.bannerImage);
+            setassociatedLogoImageUrls(CONSTANT_DATA.IMAGE_BASE_URL + state?.item?.associatedLogo);
 
             if (state?.item?.associatedLogo) {
                 setImageUploaded(true);

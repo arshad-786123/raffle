@@ -257,7 +257,7 @@ const AdminMerchants = () => {
                                         <>
                                             <div className='hidden lg:block lg:flex items-center justify-between bg-white p-2 rounded-md mt-4'>
                                                 {
-                                                    item?.image ? <img src={item ? CONSTANT_DATA.BASE_URL + item?.image : noimage} alt={item?.businessName} style={{ height: "50px", width: "50px", borderRadius: "50%" }}
+                                                    item?.image ? <img src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.image : noimage} alt={item?.businessName} style={{ height: "50px", width: "50px", borderRadius: "50%" }}
                                                         onError={(e) => {
                                                             const target = e.target as HTMLImageElement;
                                                             target.onerror = null;
@@ -353,7 +353,7 @@ const AdminMerchants = () => {
                                             </div>
                                             <div className='block lg:hidden flex lg:items-center justify-between bg-white p-2 rounded-md mt-4'>
                                                 {
-                                                    item?.image ? <img src={CONSTANT_DATA.BASE_URL + item?.image} alt={item?.businessName} style={{ height: "50px", width: "50px", borderRadius: "50%" }} />
+                                                    item?.image ? <img src={CONSTANT_DATA.IMAGE_BASE_URL + item?.image} alt={item?.businessName} style={{ height: "50px", width: "50px", borderRadius: "50%" }} />
                                                         :
                                                         <svg className='rounded-[50px] bg-[#F2DAE9] p-3' width="44" height="43" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <g clip-path="url(#clip0_174_416)">
@@ -471,7 +471,7 @@ const AdminMerchants = () => {
                                         <>
                                             <div className='hidden lg:block lg:flex items-center justify-between bg-white p-2 rounded-md mt-4'>
                                                 {
-                                                    item?.image ? <img src={item ? CONSTANT_DATA.BASE_URL + item?.image : noimage} alt={item?.businessName} style={{ height: "50px", width: "50px", borderRadius: "50%" }}
+                                                    item?.image ? <img src={item ? CONSTANT_DATA.IMAGE_BASE_URL + item?.image : noimage} alt={item?.businessName} style={{ height: "50px", width: "50px", borderRadius: "50%" }}
                                                         onError={(e) => {
                                                             const target = e.target as HTMLImageElement;
                                                             target.onerror = null;
@@ -556,7 +556,7 @@ const AdminMerchants = () => {
                                             </div>
                                             <div className='block lg:hidden flex lg:items-center justify-between bg-white p-2 rounded-md mt-4'>
                                                 {
-                                                    item?.image ? <img src={CONSTANT_DATA.BASE_URL + item?.image} alt={item?.businessName} style={{ height: "50px", width: "50px", borderRadius: "50%" }} />
+                                                    item?.image ? <img src={CONSTANT_DATA.IMAGE_BASE_URL + item?.image} alt={item?.businessName} style={{ height: "50px", width: "50px", borderRadius: "50%" }} />
                                                         :
                                                         <svg className='rounded-[50px] bg-[#F2DAE9] p-3' width="44" height="43" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <g clip-path="url(#clip0_174_416)">
