@@ -7,7 +7,7 @@ const env = "local" as Environment; // Change to "staging" or "production" as ne
 // Use an object to map each environment to its corresponding configuration
 const ENV_CONFIG: { [key in Environment]: { BASE_URL: string; WEB_URL: string; CLIENT_ID: string } } = {
     local: {
-        BASE_URL: "https://raffily.com/services",
+        BASE_URL: "https://rafflebackend-production.up.railway.app/",
         WEB_URL: "https://raffily.com",
         CLIENT_ID: ""
     },
