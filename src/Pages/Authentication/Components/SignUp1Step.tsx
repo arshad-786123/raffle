@@ -1,0 +1,370 @@
+import { Checkbox, Modal } from 'flowbite-react';
+import { useCallback, useEffect, useState } from 'react';
+// import { Country, getCountries } from '../../../Services/General/countries';
+import { UserRegister } from '../../../Utils/Interface/register.interface';
+import toast, { Toaster } from 'react-hot-toast';
+import { errorToast } from '../../../Utils/Toast/error.toast';
+import { getUserRegisteredData } from '../../../Services/Authentication/register';
+
+const SignUp1Step = ({ authenticationModal, setAuthenticationModal, setUserRegisterData, userRegisterData }: any) => {
+
+    const onClose = (): void => {
+        setAuthenticationModal({
+            isSignUp1Step: false,
+            isSignUp2Step: false,
+            isBusinessSignUp1Step: false,
+            isForgotPassOpen: false,
+            isSignInOpen: false,
+            isSignUpOpen: false
+        });
+    };
+    const [opted, setOpted] = useState<boolean>(true);
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleSign2Step = async () => {
+        try {
+
+            if (userRegisterData.firstname === "") {
+                return errorToast("Please enter your first name")
+            }
+            else if (userRegisterData.lastname === "") {
+                return errorToast("Please enter your lastname")
+            }
+            if (!userRegisterData.address) {
+                errorToast("Please Enter a Adress");
+                return false;
+            }
+            else if (!userRegisterData.region) {
+                errorToast("Please Enter a town");
+                return false;
+            }
+            else if (!userRegisterData.city) {
+                errorToast("Please Enter a County");
+                return false;
+            }
+            else if (!userRegisterData.postcode) {
+                errorToast("Please Enter a Postcode");
+                return false;
+            }
+            //  else if (userRegisterData.dialCode.code === "") {
+            //     return errorToast("Please enter your dial code")
+            // } 
+            else if (userRegisterData.phone === "") {
+                return errorToast("Please enter your phone")
+            } else if (userRegisterData.password === "") {
+                return errorToast("Please enter your password")
+            }
+            else if (userRegisterData.confirmPassword === "") {
+                return errorToast("Please enter your confirm password");
+            } else if (userRegisterData.password !== userRegisterData.confirmPassword) {
+                return errorToast("Passwords do not match");
+            } else if (!isChecked) { // Validate checkbox
+                return errorToast("You must agree to the terms and conditions");
+            }
+
+            // Add the `opted` value to `userRegisterData` before the API call
+            const updatedUserData = {
+                ...userRegisterData,
+                opted, // Include opted state
+            };
+
+            const result = await getUserRegisteredData(updatedUserData);
+
+
+            if (!result.success) {
+
+                if (result.message == "User already Exist. Please verify the user") {
+                    setAuthenticationModal({
+                        isSignUp1Step: false,
+                        isSignUp2Step: true,
+                        isBusinessSignUp1Step: false,
+                        isForgotPassOpen: false,
+                        isSignInOpen: false,
+                        isSignUpOpen: false
+                    });
+                }
+
+                return errorToast(result.message)
+
+            }
+
+            setAuthenticationModal({
+                isSignUp1Step: false,
+                isSignUp2Step: true,
+                isBusinessSignUp1Step: false,
+                isForgotPassOpen: false,
+                isSignInOpen: false,
+                isSignUpOpen: false
+            });
+        } catch (error: any) {
+            console.log(error.message);
+
+        }
+    }
+
+
+
+    const goBack = (): void => {
+        setAuthenticationModal({
+            isSignUp1Step: false,
+            isSignUp2Step: false,
+            isBusinessSignUp1Step: false,
+            isForgotPassOpen: false,
+            isSignInOpen: false,
+            isSignUpOpen: true
+        });
+    }
+
+
+    // const [countriesData, setCountriesData] = useState<Country[]>([])
+
+    // useEffect(() => {
+    //     const countries = async () => {
+    //         const result = await getCountries();
+    //         setCountriesData(result)
+    //     }
+    //     countries()
+    // }, [])
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        const { name, value } = e.target;
+        setUserRegisterData((prev: UserRegister) => {
+            return {
+                ...prev,
+                [name]: value
+            }
+        })
+    }
+
+    const handleSelectDialCode = (e: any): void => {
+        const selectedOption = e.target.selectedOptions[0];
+        const name = selectedOption.getAttribute('data-name');
+        const dialCode = selectedOption.getAttribute('data-dialcode');
+        setUserRegisterData((prev: UserRegister) => {
+            return {
+                ...prev,
+                dialCode: {
+                    country: name,
+                    code: e.target.value,
+                    dial_code: dialCode
+                }
+            }
+        })
+
+    }
+
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+
+    return (
+        <div >
+            <Toaster position="top-right"
+                reverseOrder={false} />
+            <Modal
+                className='bg-[#160B3A]'
+                dismissible
+                position="center"
+                show={authenticationModal.isSignUp1Step}
+                onClose={onClose}
+                popup
+            >
+                <div className='rounded-md'>
+                    <Modal.Header className='bg-white  rounded-t-md' />
+                    <Modal.Body className="bg-white text-secondary  h-full xs:h-auto rounded-b-md" style={{ fontFamily: "poppins, sans-serif" }}>
+                        <div onClick={goBack} className='cursor-pointer absolute top-4'>
+                            <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.44033 14.0972C9.85557 14.5178 9.86807 15.213 9.46885 15.6503C9.26416 15.8743 8.99072 15.9872 8.71728 15.9872C8.45713 15.9872 8.19658 15.8854 7.99463 15.6806L1.21611 8.81616C1.01182 8.60964 0.895996 8.32353 0.895996 8.02529C0.895996 7.72601 1.01182 7.44052 1.21611 7.23339L7.99463 0.369592C8.40947 -0.0506281 9.06963 -0.0372585 9.46885 0.399622C9.86807 0.837531 9.85537 1.53276 9.44033 1.95256L3.44385 8.02529L9.44033 14.0972Z" fill="black" />
+                            </svg>
+                        </div>
+                        <div className='mt-2' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>
+                            <h3 className='text-center text-md lg:text-lg font-bold tracking-wider'>Step 1: Complete your information</h3>
+                        </div>
+                        <div className='mt-4' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>
+                            <p className='text-sm lg:text-md'>First Name</p>
+                            <div className='flex items-center gap-4 rounded-md p-2 lg:p-2 border-[1px] mt-2'>
+                                <input onChange={handleChange} value={userRegisterData.firstname} className='border-none outline-none w-[100%]' type="text" placeholder='Enter your first name' name="firstname" id="firstname" />
+                            </div>
+                            <p className='mt-4 text-sm lg:text-md'>Last Name</p>
+                            <div className='flex items-center justify-between  gap-4 rounded-md p-2 lg:p-2 border-[1px] mt-2'>
+                                <input onChange={handleChange} value={userRegisterData.lastname} className='border-none outline-none w-[100%]' type="text" placeholder='Enter your last name' name="lastname" id="lastname" />
+                            </div>
+                            <p className='mt-4 text-sm lg:text-md'>Phone Number</p>
+                            <div className='flex mb-2 items-center gap-4'>
+                                {/* <div className='w-[28%] flex items-center justify-between gap-4 rounded-md p-2 lg:p-2 border-[1px] mt-2'> */}
+                                {/* <input className='border-none outline-none' type="password" placeholder='Password' name="email" id="email" /> */}
+                                {/* <img src={`https://flagsapi.com/${userRegisterData.dialCode.code || "AF"}/shiny/64.png`} className='w-8' />
+                                    <select onChange={(e) => handleSelectDialCode(e)} id="countrySelect" className='border-none outline-none w-full cursor-pointer'>
+                                        {
+                                            countriesData?.map((item, i) => (
+                                                <>
+                                                    <option data-name={item.name} data-dialcode={item.dial_code} value={item.code} className='text-start'>{item.code} &nbsp; {item.dial_code}
+                                                        <img src={`https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/${item.code}.svg`} />
+                                                    </option>
+                                                </>
+                                            ))
+                                        }
+                                    </select> */}
+                                {/* </div> */}
+
+
+
+
+
+
+                                {/* <div className='text-start absolute h-96 bg-white overflow-y-scroll w-56'>
+                                    {
+                                        countriesData?.map((item, i) => (
+                                            <div className='flex gap-4 justify-start'>
+                                                <img className='w-8' src={`https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/${item.code}.svg`} />
+                                                <div className='text-start flex gap-3 items-center'>
+                                                    <p>{item.code}</p>
+                                                    <p>{item.dial_code}</p>
+                                                </div>                                                
+                                            </div>
+                                        ))
+                                    }
+                                </div> */}
+                                <div className='w-[100%] flex items-center justify-between gap-4 rounded-md p-2 lg:p-2 border-[1px] mt-2'>
+                                    <input onChange={handleChange} value={userRegisterData.phone} className='border-none outline-none w-full' type="number" placeholder='Enter your Phone Number' name="phone" id="phone" />
+                                </div>
+                            </div>
+
+                            <p className='text-xs'>We use this number to verify your account and will never contact you  for marketing purposes unless opted in via marketing preferences.</p>
+                            <p className='mt-4 text-sm lg:text-md'>Email</p>
+                            <div className='flex mb-2 items-center gap-4'>
+
+                                <div className='w-[100%] flex items-center justify-between gap-4 rounded-md p-2 lg:p-2 border-[1px] mt-2'>
+                                    <input onChange={handleChange} value={userRegisterData.email} className='border-none outline-none w-full' type="email" placeholder='Enter your Email' name="email" id="email" />
+                                </div>
+                            </div>
+                            <p className='text-sm lg:text-md mt-4'>First Line of Address</p>
+                            <div className='flex items-center gap-4 rounded-md p-2 lg:p-2 border-[1px] mt-2'>
+                                <input onChange={handleChange} value={userRegisterData.address} className='border-none outline-none w-[100%]' type="text" placeholder="Enter the address" name="address" id="address" />
+                            </div>
+                            <p className='text-sm lg:text-md mt-4'>Town</p>
+                            <div className='flex items-center gap-4 rounded-md p-2 lg:p-2 border-[1px] mt-2'>
+                                <input onChange={handleChange} value={userRegisterData.region} className='border-none outline-none w-[100%]' type="text" placeholder="Enter your Town" name="region" id="region" />
+                            </div>
+                            <p className='text-sm lg:text-md mt-4'>County</p>
+                            <div className='flex items-center gap-4 rounded-md p-2 lg:p-2 border-[1px] mt-2'>
+                                <input onChange={handleChange} value={userRegisterData.city} className='border-none outline-none w-[100%]' type="text" placeholder="Enter the County" name="city" id="city" />
+                            </div>
+                            <p className='text-sm lg:text-md mt-4'>Post code</p>
+                            <div className='flex items-center gap-4 rounded-md p-2 lg:p-2 border-[1px] mt-2'>
+                                <input onChange={handleChange} value={userRegisterData.postcode} className='border-none outline-none w-[100%]' type="text" placeholder="Enter your postcode" name="postcode" id="postcode" />
+                            </div>
+                            <p className='mt-4 text-sm lg:text-md'>Set up a password</p>
+                            <div className='flex items-center justify-between gap-4 rounded-md p-2 lg:p-2 border-[1px] mt-2'>
+                                <input onChange={handleChange} value={userRegisterData.password} className='border-none outline-none w-[100%]' type={passwordVisible ? "text" : "password"} placeholder='Password' name="password" id="password" />
+                                {
+                                    passwordVisible ?
+                                        <svg onClick={() => { setPasswordVisible(false) }} width="24" height="21" viewBox="0 0 29 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 12C1.26055 5.17301 7.27301 0 14.5 0C21.727 0 27.7395 5.17301 29 12C27.7395 18.8269 21.727 24 14.5 24C7.27301 24 1.26055 18.8269 0 12ZM14.5 18.6667C18.2011 18.6667 21.2014 15.6819 21.2014 12C21.2014 8.31811 18.2011 5.33333 14.5 5.33333C10.7989 5.33333 7.79858 8.31811 7.79858 12C7.79858 15.6819 10.7989 18.6667 14.5 18.6667ZM14.5 16C12.2793 16 10.4791 14.2092 10.4791 12C10.4791 9.7908 12.2793 8 14.5 8C16.7206 8 18.5209 9.7908 18.5209 12C18.5209 14.2092 16.7206 16 14.5 16Z" fill="black" fill-opacity="0.5" />
+                                        </svg>
+                                        :
+                                        <svg onClick={() => { setPasswordVisible(true) }} width="24" height="21" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4.47497 5.99383L0.284166 1.86667L2.17962 0L28.7159 26.1332L26.8204 28L22.3841 23.631C20.1039 25.0548 17.3997 25.8794 14.5 25.8794C7.27301 25.8794 1.26055 20.7583 0 14C0.585274 10.8621 2.19495 8.07711 4.47497 5.99383ZM18.1957 19.5063L16.2336 17.5739C15.7086 17.8212 15.1207 17.9598 14.5 17.9598C12.2793 17.9598 10.4791 16.1869 10.4791 14C10.4791 13.3886 10.6198 12.8097 10.871 12.2927L8.90887 10.3604C8.20721 11.4037 7.79858 12.6549 7.79858 14C7.79858 17.6449 10.7989 20.5997 14.5 20.5997C15.8658 20.5997 17.1362 20.1972 18.1957 19.5063ZM9.10429 3.12375C10.7754 2.47624 12.5955 2.12061 14.5 2.12061C21.727 2.12061 27.7395 7.24162 29 14C28.5816 16.2434 27.6395 18.3064 26.3032 20.0615L21.13 14.9669C21.1771 14.6513 21.2014 14.3284 21.2014 14C21.2014 10.3551 18.2011 7.40033 14.5 7.40033C14.1664 7.40033 13.8386 7.42432 13.5182 7.47064L9.10429 3.12375Z" fill="black" fill-opacity="0.5" />
+                                        </svg>
+                                }
+                            </div>
+                            <p className='mt-4 text-sm lg:text-md'>Confirm Password</p>
+                            <div className='flex items-center justify-between gap-4 rounded-md p-2 lg:p-2 border-[1px] mt-2'>
+                                <input onChange={handleChange} value={userRegisterData.confirmPassword} className='border-none outline-none w-[100%]' type={confirmPasswordVisible ? "text" : "password"} placeholder='Confirm Password' name="confirmPassword" id="confirmPassword" />
+                                {
+                                    confirmPasswordVisible ?
+                                        <svg onClick={() => { setConfirmPasswordVisible(false) }} width="24" height="21" viewBox="0 0 29 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 12C1.26055 5.17301 7.27301 0 14.5 0C21.727 0 27.7395 5.17301 29 12C27.7395 18.8269 21.727 24 14.5 24C7.27301 24 1.26055 18.8269 0 12ZM14.5 18.6667C18.2011 18.6667 21.2014 15.6819 21.2014 12C21.2014 8.31811 18.2011 5.33333 14.5 5.33333C10.7989 5.33333 7.79858 8.31811 7.79858 12C7.79858 15.6819 10.7989 18.6667 14.5 18.6667ZM14.5 16C12.2793 16 10.4791 14.2092 10.4791 12C10.4791 9.7908 12.2793 8 14.5 8C16.7206 8 18.5209 9.7908 18.5209 12C18.5209 14.2092 16.7206 16 14.5 16Z" fill="black" fill-opacity="0.5" />
+                                        </svg>
+                                        :
+                                        <svg onClick={() => { setConfirmPasswordVisible(true) }} width="24" height="21" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4.47497 5.99383L0.284166 1.86667L2.17962 0L28.7159 26.1332L26.8204 28L22.3841 23.631C20.1039 25.0548 17.3997 25.8794 14.5 25.8794C7.27301 25.8794 1.26055 20.7583 0 14C0.585274 10.8621 2.19495 8.07711 4.47497 5.99383ZM18.1957 19.5063L16.2336 17.5739C15.7086 17.8212 15.1207 17.9598 14.5 17.9598C12.2793 17.9598 10.4791 16.1869 10.4791 14C10.4791 13.3886 10.6198 12.8097 10.871 12.2927L8.90887 10.3604C8.20721 11.4037 7.79858 12.6549 7.79858 14C7.79858 17.6449 10.7989 20.5997 14.5 20.5997C15.8658 20.5997 17.1362 20.1972 18.1957 19.5063ZM9.10429 3.12375C10.7754 2.47624 12.5955 2.12061 14.5 2.12061C21.727 2.12061 27.7395 7.24162 29 14C28.5816 16.2434 27.6395 18.3064 26.3032 20.0615L21.13 14.9669C21.1771 14.6513 21.2014 14.3284 21.2014 14C21.2014 10.3551 18.2011 7.40033 14.5 7.40033C14.1664 7.40033 13.8386 7.42432 13.5182 7.47064L9.10429 3.12375Z" fill="black" fill-opacity="0.5" />
+                                        </svg>
+                                }
+                            </div>
+                            {/* <p className='mt-4 text-sm lg:text-md'>Referral Code</p>
+                            <div className='flex items-center justify-between gap-4 rounded-md p-2 lg:p-2 border-[1px] mt-2'>
+                                <input onChange={handleChange} value={userRegisterData.referralCode} className='border-none outline-none w-[100%]' type="password" placeholder='leave blank if no code' name="referralCode" id="referralCode" />
+                            </div> */}
+                            {/* <div className='flex items-start gap-2 text-xs mt-2'>
+                                <Checkbox id="accept" defaultChecked />
+                                <p>I agree to receiving emails and SMS messages about prizes from Raffily and third parties</p>
+                            </div> */}
+                            <div className="flex items-start gap-2 text-xs mt-2">
+                                <Checkbox
+                                    id="contactForOffers"
+                                    checked={opted} // Bind to state
+                                    onChange={(e) => setOpted(e.target.checked)} // Update state
+                                    defaultChecked
+                                />
+                                <p>
+                                    I agree to receiving emails and SMS messages about prizes from Raffily and third parties
+                                </p>
+                            </div>
+                            <div className="flex items-start gap-2 text-xs mt-2">
+                                <Checkbox
+                                    id="accept"
+                                    checked={isChecked}
+                                    onChange={(e) => setIsChecked(e.target.checked)}
+                                />
+                                <p>I am over 18 years of age and agree to the terms and conditions</p>
+                            </div>
+
+
+
+
+                            {/* <div className="flex items-start gap-2 text-xs mt-2">
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        name="contactForOffers"
+                                        className="mr-2"
+                                        checked={opted} // Bind to state
+                                        onChange={(e) => setOpted(e.target.checked)} // Update state
+                                    />
+                                    Contact me about prizes & competitions, offers, and services
+                                    from 3rd parties.
+                                </label>
+                            </div> */}
+                            {/* <div className='flex items-start gap-2 text-xs mt-2'>
+                                <Checkbox id="accept" defaultChecked />
+                                <p>I would like to receive exciting updates on raffles.my chosen charity, partner promotions, exclusive discounts and free tickets!</p>
+                            </div>
+                            <div className='flex items-start gap-2 text-xs mt-2'>
+                                <Checkbox id="accept" defaultChecked />
+                                <p>I would like to receive offers and discounts via SMS</p>
+                            </div> */}
+                        </div>
+                        <div onClick={handleSign2Step} className='text-center bg-[#20124C] p-4 rounded-md flex items-center text-white gap-4 font-bold mt-4 cursor-pointer'>
+                            <p className='text-center w-full text-xl font-medium'>Continue</p>
+                        </div>
+
+                        <div className=' mt-4 w-[100%] m-auto text-left text-xs ' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>
+                            By creating an account you agree that you are at least 18 years of age, and accept and agree to the &nbsp;
+                            <span className='text-[#EB4C60] font-bold'><a
+                                href="/terms-and-conditions"
+                                className="text-[#EB4C60] font-bold"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Terms and Conditions
+                            </a></span>
+                            &nbsp;and&nbsp;
+                            <span className='text-[#EB4C60] font-bold'> <a
+                                href="/privacy-policy"
+                                className="text-[#EB4C60] font-bold"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Privacy Policy
+                            </a></span>
+                        </div>
+                    </Modal.Body>
+
+
+                </div>
+            </Modal>
+        </div>
+    )
+}
+
+export default SignUp1Step

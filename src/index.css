@@ -1,0 +1,356 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* @font-face {
+  font-family: "modern-regular";
+  src: url("./assets/fonts/modern-era-regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+} */
+
+/* @font-face {
+  font-family: "modern-medium";
+  src: url("./assets/fonts/modern-era-medium.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+} */
+
+/* @font-face {
+  font-family: "modern-light";
+  src: url("./assets/fonts/modern-era-light.ttf") format("truetype");
+  font-weight: lighter;
+  font-style: normal;
+} */
+
+/* @font-face {
+  font-family: "modern-extrabold";
+  src: url("./assets/fonts/modern-era-extrabold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+} */
+
+/* @font-face {
+  font-family: "modern-bold";
+  src: url("./assets/fonts/modern-era-bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+} */
+
+@font-face {
+  font-family: "ModernEraRegular";
+  src: url("./assets/fonts/ModernEraRegular.eot");
+  src: url("./assets/fonts/ModernEraRegular.eot") format("embedded-opentype"),
+    url("./assets/fonts/ModernEraRegular.woff2") format("woff2"),
+    url("./assets/fonts/ModernEraRegular.woff") format("woff"),
+    url("./assets/fonts/ModernEraRegular.ttf") format("truetype"),
+    url("./assets/fonts/ModernEraRegular.svg#ModernEraRegular") format("svg");
+}
+
+@font-face {
+  font-family: "ModernEraBold";
+  src: url("./assets/fonts/ModernEraBold.eot");
+  src: url("./assets/fonts/ModernEraBold.eot") format("embedded-opentype"),
+    url("./assets/fonts/ModernEraBold.woff2") format("woff2"),
+    url("./assets/fonts/ModernEraBold.woff") format("woff"),
+    url("./assets/fonts/ModernEraBold.ttf") format("truetype"),
+    url("./assets/fonts/ModernEraBold.svg#ModernEraBold") format("svg");
+}
+
+:root {
+  /* font-family: "modernRegular", sans-serif; */
+  --font-family-ModernEraRegular: "ModernEraRegular", sans-serif;
+  --font-family-ModernEraBold: "ModernEraBold", sans-serif;
+  --font-family-PlusJakartaSans: "Plus Jakarta Sans", sans-serif;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: #000000;
+  font-family: var(--font-family-ModernEraRegular);
+  letter-spacing: -0.02em;
+  margin: 0;
+  overflow-x: hidden !important;
+  width: 100vw !important;
+}
+
+input[type="radio"]:checked {
+  background-color: #ff6a78;
+}
+
+.ddd {
+  margin: 0;
+}
+
+.hiddenSidebar {
+  overflow: hidden !important;
+}
+
+.zHigh {
+  z-index: 9 !important;
+}
+
+.tabItem {
+  color: #ff6a78 !important;
+}
+
+.bigcardgap {
+  margin: 4px;
+}
+
+.leftarrow {
+  position: absolute;
+  left: -25px;
+  z-index: 1;
+}
+
+.rightarrow {
+  position: absolute;
+  right: -25px;
+  z-index: 1;
+}
+
+/* .leftarrowFeatures {
+  position: absolute;
+  left: -25px;
+  z-index: 1;
+}
+.rightarrowFeatures {
+  position: absolute;
+  right: -25px;
+  z-index: 1;
+} */
+
+.cartimage {
+  width: 20%;
+  position: relative;
+}
+
+.cartdesc {
+  width: 60%;
+  padding: 0 0 0 4%;
+}
+
+.cartprice {
+  width: 20%;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 8px;
+  left: 200px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+}
+
+/* Breadcrumb */
+.breadcrumb-container {
+  padding: 10px;
+  background-color: #f9f0f0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.breadcrumb {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #20124c;
+}
+
+.breadcrumb-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+  color: #6c757d;
+}
+
+img {
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.responsive-container {
+  width: 100%;
+}
+
+.responsive-container1 {
+  position: relative;
+  width: 100%;
+  padding-bottom: calc(350 / 370 * 100%);
+}
+
+.responsive-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 90%;
+  object-fit: cover !important;
+  border-radius: 0.5rem;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .view-icon {
+    margin-top: -120px !important;
+  }
+
+  .user-view-icon {
+    margin-top: -120px !important;
+  }
+
+  .cartimage {
+    width: 50%;
+  }
+
+  .cartdesc {
+    width: 100%;
+    padding: 0 0 0 4%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-container {
+    width: 64%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .responsive-container {
+    width: 80%;
+  }
+}
+
+.alert {
+  background: #f1f1f1;
+  color: #000;
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border-left: 5px solid green;
+}
+
+.rssas-slider-bar-track {
+  background-color: rgba(246, 246, 248, 1) !important;
+}
+
+.rssas-slider-bar-thumb {
+  background: linear-gradient(55.21deg,
+      #ad6fff 9.69%,
+      #fd98e8 47.47%,
+      #ff7385 83.78%) !important;
+  border-radius: 10px !important;
+}
+
+.rssas-slider-tray {
+  gap: 45px;
+}

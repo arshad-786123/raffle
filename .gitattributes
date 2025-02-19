@@ -1,0 +1,14 @@
+index.html filter=lfs diff=lfs merge=lfs -text
+README.md filter=lfs diff=lfs merge=lfs -text
+src filter=lfs diff=lfs merge=lfs -text
+tsconfig.json filter=lfs diff=lfs merge=lfs -text
+tsconfig.node.json filter=lfs diff=lfs merge=lfs -text
+yarn-error.log filter=lfs diff=lfs merge=lfs -text
+yarn.lock filter=lfs diff=lfs merge=lfs -text
+dist filter=lfs diff=lfs merge=lfs -text
+package-lock.json filter=lfs diff=lfs merge=lfs -text
+public filter=lfs diff=lfs merge=lfs -text
+vite.config.ts filter=lfs diff=lfs merge=lfs -text
+package.json filter=lfs diff=lfs merge=lfs -text
+postcss.config.js filter=lfs diff=lfs merge=lfs -text
+tailwind.config.js filter=lfs diff=lfs merge=lfs -text

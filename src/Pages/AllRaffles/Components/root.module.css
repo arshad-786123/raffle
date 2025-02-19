@@ -1,0 +1,150 @@
+.heroBanner {
+    background-color: var(--color-main);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.heroBanner::before {
+    background: linear-gradient(55.21deg, #AD6FFF 9.69%, #FD98E8 47.47%, #FF7385 83.78%);
+    /* backdrop-filter: blur(400px); */
+    filter: blur(400px);
+    /* opacity: 50%; */
+    opacity: 0.2;
+    /* background: url(./../../../public/homeBannerGradient.svg) no-repeat center center/100% 100%; */
+    border-radius: 50%;
+    content: "";
+    position: absolute;
+    left: -90px;
+    bottom: -30px;
+    height: 322px;
+    width: 322px;
+}
+
+.heroBannerLeft {
+    /* padding: 0 0 0 42px; */
+    padding: 0 0 0 60px;
+}
+
+.heroBannerTitle {
+    color: #ffffff;
+    /* font-family: Modern Era; */
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+}
+
+.heroBannerText {
+    color: #ffffff;
+    /* font-family: Modern Era; */
+    font-size: 22px;
+    font-weight: 500;
+    /* line-height: 30.8px; */
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+}
+
+.heroBannerText span {
+    color: var(--color-pink-two);
+}
+
+.heroBannerAssociationTitle {
+    color: #ffffff66;
+    /* font-family: Modern Era; */
+    font-size: 12px;
+    font-weight: 500;
+    /* line-height: 16.8px; */
+    line-height: 1.4;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.heroBannerImg {
+    height: auto;
+    /* Maintain aspect ratio */
+    /* clip-path: polygon(158px 0px, 75% 0px, 74.9% 100%, 0px 100%); */
+    clip-path: polygon(15.2% 0, 100% 0, 100% 100%, 0 100%);
+    left: 0;
+    max-width: calc(100% + 60px) !important;
+}
+
+.logosSliderBox {
+    background-color: #F6F6F8;
+    padding-top: 25px;
+}
+
+.logosSliderCont {
+    padding-bottom: 25px;
+}
+
+.featuredRaffles {
+    padding-top: 96px;
+}
+
+.featuredRafflesBoxCont {}
+
+.featuredRafflesBox {
+    border: 1px solid rgba(234, 235, 237, 1);
+    border-radius: 10px;
+    width: 45%;
+}
+
+.featuredRafflesBoxLeft,
+.featuredRafflesBoxRight {
+    width: 50%;
+}
+
+.featuredRafflesImg {
+    border-radius: 9px 0 0 9px;
+    height: 100%;
+}
+
+.timerBoxCont {
+    background-color: var(--color-main);
+    border-radius: 14px;
+    padding: 14px 16px;
+    top: 16px;
+    left: 16px;
+}
+
+.timerBox {
+    text-align: center;
+}
+
+.timerNumber {
+    color: #ffffff;
+    /* font-family: Plus Jakarta Sans; */
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20.16px;
+    margin-bottom: 8px;
+}
+
+.timerText {
+    color: #FFFFFF99;
+    /* font-family: Plus Jakarta Sans; */
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.timerDevider {
+    background-color: #FFFFFF66;
+    height: 15px;
+    width: 1px;
+}
+
+.featuredRafflesThumbImg {
+    bottom: 16px;
+    left: 16px;
+}
+
+.featuredRafflesThumbImg .ThumbImg {
+    border: 2px solid #FFFFFF;
+    height: 56px;
+    width: 56px;
+}

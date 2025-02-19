@@ -1,0 +1,576 @@
+@font-face {
+  font-family: "ModernEraMedium";
+  src: url("/fonts/modern-era-medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply the font globally or to specific elements */
+body {
+  font-family: "ModernEraMedium", sans-serif;
+}
+
+.slider_content {
+  width: 1000px !important;
+  position: relative !important;
+  height: max-content !important;
+}
+
+.comming_soon_timer {
+  background: linear-gradient(180deg, #20124c 0%, #33206c 50%, #20124c 100%);
+  width: max-content !important;
+}
+
+.csform input,
+.csform input {
+  color: black;
+}
+
+.zHigh22 {
+  z-index: 999999999999999999999999 !important;
+}
+
+
+
+@media screen and (max-width: 1023px) {
+  .keen-slider__slide {
+    flex: 100% 0 0;
+  }
+
+  .save-button {
+    margin-bottom: 10px;
+  }
+
+  .image-space {
+    margin-top: -10px !important;
+  }
+
+  .custom-businessname {
+    font-size: 15px !important;
+    /* font-weight: 600; */
+    /* color: #ff0000; */
+    /* margin-bottom: 10px; */
+  }
+
+  .banner-image1 {
+    background-image: url("./assets/MobileBanner1.jpg") !important;
+    height: 750px !important;
+  }
+
+  .banner-winner-mobile {
+    background-image: url("./assets/winnerspagemobilebanner.jpg") !important;
+    height: 750px !important;
+  }
+
+  .banner-past-draws-mobile {
+    background-image: url("./assets/pastdrawbgmob.jpg") !important;
+    height: 750px !important;
+  }
+
+  .banner-all-raffles-mobile {
+    /* background-image: url("./assets/all-raffle-bg-mob.jpg") !important; */
+    height: 750px !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .banner-about-us-mobile {
+    background-image: url("./assets/about-bg-mob.jpg") !important;
+    height: 750px !important;
+  }
+
+  .banner-image-hero {
+    background-position: right;
+  }
+
+  /* .banner-mobile {
+    background-image: url("./assets/trigle.png") !important;
+    min-height: 400px;
+
+  } */
+
+  .banner-mobile {
+    background-image: url("./assets/hometrigle.png") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: -136px;
+  }
+
+  .banner-img {
+    position: static !important;
+    margin-top: -120px !important;
+    padding-left: 26px !important;
+    padding-top: 70px !important;
+    padding-bottom: 50px !important;
+    padding-right: 26px !important;
+    margin-left: -2px !important;
+    width: calc(100% + 2px) !important;
+  }
+
+  .merchant-banner {
+    padding-right: 5px;
+  }
+
+  .winner-banner {
+    padding-right: 15px;
+  }
+
+  .pastdrow-banner {
+    width: 100%;
+    padding-right: 15px;
+  }
+
+  .about-banner {
+    width: 100%;
+    padding-right: 30px;
+  }
+
+  .about-banner p {
+    max-width: 244px;
+    margin: 0 auto;
+    margin-top: 15px;
+  }
+
+  .banner-with-layer {
+    height: auto !important;
+
+  }
+
+  .banner-with-layer .banner-mobile {
+    position: static !important;
+    /* padding-right: 35px !important; */
+  }
+
+  .banner-with-layer .mobile-image {
+    height: 375px !important;
+  }
+}
+
+.bg-raffles {
+  background-image: url("./assets/how-works.jpg") !important;
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  background-attachment: fixed; 
+}
+
+.bg-raffles-footer {
+  background-image: url("./assets/footer.png") !important;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ========================== */
+
+/* App.css */
+/* 
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.content {
+    flex: 1;
+}
+
+footer {
+    background: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+} */
+
+.footer-manage {
+  min-height: 100vh;
+}
+
+.rccs {
+  width: auto !important;
+}
+
+.rccs__card {
+  width: auto !important;
+}
+
+.rccs__card:not(.rccs__card--unknown) .rccs__card__background {
+  left: -36% !important;
+}
+
+.App-payment .rccs {
+  width: 270px !important;
+}
+
+.free-postal-entry ol {
+  list-style-type: lower-alpha;
+}
+
+.free-postal-entry ul {
+  list-style-type: lower-roman;
+}
+
+.footer-pages ul {
+  list-style: disc;
+  margin-left: 40px;
+  margin-bottom: 30px;
+}
+
+.footer-pages ul li {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-pages p strong {
+  margin-top: 20px !important;
+  display: block;
+}
+
+.mt-3 {
+  margin-top: 10px !important;
+}
+
+.ml-3 {
+  margin-left: 30px !important;
+}
+
+.footer-pages a {
+  color: rgb(0, 89, 255) !important;
+  text-decoration: underline !important;
+}
+
+.privacy-table,
+.privacy-table th,
+.privacy-table td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+  height: 45px;
+}
+
+.age-restriction {
+  display: inline-block;
+  margin-left: 10px;
+  /* Adjust the spacing as needed */
+  padding: 12px 8px;
+  background-color: #0806064b;
+  border-radius: 50%;
+  color: white;
+  font-size: 16px;
+  /* Adjust font size */
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid red;
+}
+
+.custom-input {
+  font-family: "Poppins";
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Set the background color to white */
+.custom-quill .ql-container {
+  background-color: white;
+  /* Background of the editor */
+  border: none !important;
+  height: 30vh;
+  min-height: 250px;
+}
+
+/* Set the placeholder font family and color to gray */
+.custom-quill .ql-editor::before {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #979292 !important;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+/* Ensure the editor text is also visible with your background color */
+.custom-quill .ql-editor {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.25rem;
+  color: #979292 !important;
+  font-weight: normal !important;
+  line-height: inherit;
+}
+
+.raffle-details-description ol {
+  list-style: auto !important;
+  margin-left: 20px;
+}
+
+.raffle-details-description ul {
+  list-style-type: disc !important;
+  margin-left: 20px;
+}
+
+.raffle-details-description * {
+  color: #000 !important;
+  font-family: "Poppins";
+}
+
+.raffle-details-description h1,
+.raffle-details-description h2,
+.raffle-details-description h3 {
+  font-size: revert;
+}
+
+.raffle-title {
+  min-height: 70px;
+}
+
+.radio-button {
+  position: relative;
+  /* Allows for positioning of inner dot */
+  width: 24px;
+  /* Set the size of the radio button */
+  height: 24px;
+  /* Set the size of the radio button */
+  border-radius: 50%;
+  /* Make it circular */
+  border: 2px solid #000;
+  /* Border color */
+  background-color: white;
+  /* Default background color */
+  cursor: pointer;
+  /* Cursor pointer on hover */
+  appearance: none;
+  /* Remove default styling */
+  transition: all 0.3s ease;
+  /* Smooth transition for color changes */
+}
+
+.radio-button:checked {
+  background-color: white;
+  /* Background color when selected */
+  border-color: white;
+  /* Border color when selected */
+}
+
+.radio-button:checked::after {
+  content: "";
+  /* Create the dot inside the button */
+  position: absolute;
+  top: 4px;
+  /* Adjust the positioning of the dot */
+  left: 4px;
+  /* Adjust the positioning of the dot */
+  width: 12px;
+  /* Size of the dot */
+  height: 12px;
+  /* Size of the dot */
+  border-radius: 50%;
+  /* Make the dot circular */
+}
+
+/* Custom Scrollbar for elements with overflow-x-auto */
+.overflow-x-auto::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #ad6fff, #fd98e8, #ff7385);
+  /* Change this to your preferred color */
+  border-radius: 10px;
+  /* Rounded edges for the scrollbar thumb */
+  border: 2px solid #fff;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+  /* Track background color */
+  border-radius: 10px;
+}
+
+/* When hovering over the scrollbar thumb */
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, #ff7385, #fd98e8, #ad6fff);
+  /* Change color on hover */
+}
+
+.overflow-x-auto {
+  padding-bottom: 10px;
+  /* Adjust this value to move the scrollbar lower */
+}
+
+.dd {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* @media (max-width: 1024px) {
+  .clip-path-mobile {
+    background-image: url('./assets/trigle.png');
+    padding-top: 20%;
+    padding-bottom: 20%;
+    margin-top: 10%;
+
+  }
+
+} */
+
+@media (max-width: 767px) {
+  .raffle-details-imgHeight {
+    height: auto !important;
+  }
+
+  .custom-free-postText {
+    margin: 0 !important;
+    padding: 0 0 0 32%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .banner-image {
+    background-image: url("./assets/MobileBanner1.jpg") !important;
+  }
+}
+
+.image-gallery-thumbnails-container {
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Apply the margin-left only for desktop (not mobile or tablet) */
+@media screen and (min-width: 1024px) {
+  .ipad-margin {
+    margin-left: 260px;
+  }
+}
+
+.form-img img {
+  height: 250px !important;
+}
+
+.banner-with-layer {
+  height: 620px;
+}
+
+.banner-with-layer .right-image {
+  width: 58%;
+  right: 0;
+  position: absolute;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.banner-with-layer .left-image {
+  position: absolute;
+  height: 100%;
+  width: 60%;
+  left: 0;
+  top: 0;
+}
+
+.banner-with-layer .left-image>img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Apply the margin-left only for desktop (not mobile or tablet) */
+@media screen and (min-width: 1024px) {
+  .ipad-margin {
+    margin-left: 260px;
+  }
+}
+
+@media screen and (min-width: 768px)and (max-width: 1023px) {
+
+  .banner-img {
+    margin-top: -166px !important;
+  }
+
+}
+
+/* @media screen and (min-width: 1194px) and (max-width: 1260px) {
+
+  .banner-with-layer {
+    height: 484px;
+  }
+} */
+
+@media screen and (min-width: 1024px) and (max-width: 1224px) {
+
+  .banner-with-layer {
+    height: 410px;
+  }
+
+  .banner-with-layer .banner-text-small {
+    font-size: 30px;
+  }
+}
+
+@media screen and (min-width: 1224px) and (max-width:1424px) {
+
+  .banner-with-layer {
+    height: 500px;
+  }
+}
+
+@media screen and (min-width: 1424px) and (max-width:1624px) {
+
+  .banner-with-layer {
+    height: 570px;
+  }
+}
+
+
+@media screen and (min-width: 1624px) and (max-width: 1700px) {
+
+  .banner-with-layer {
+    height: 615px;
+  }
+}
+
+@media screen and (min-width: 1700px) and (max-width: 1900px) {
+  .banner-with-layer {
+    height: 650px;
+  }
+}
+
+@media screen and (min-width: 1900px) and (max-width: 2100px) {
+  .banner-with-layer {
+    height: 760px;
+  }
+}
+
+
+@media screen and (min-width: 2100px) and (max-width: 2500px) {
+  .banner-with-layer {
+    height: 850px;
+  }
+}
+
+@media screen and (min-width: 2500px) and (max-width: 3000px) {
+  .banner-with-layer {
+    height: 1000px;
+  }
+}

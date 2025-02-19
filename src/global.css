@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 200 to 800
+
+.plus-jakarta-sans-<uniquifier> {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */
+
+:root {
+  /*---- Font Familys ----*/
+  --font-family-Plus-Jakarta-Sans: "Plus Jakarta Sans", sans-serif;
+
+  /*---- Colours ----*/
+  --color-main: #110044;
+  --color-main-light: #321292;
+  --color-pink: #FF7385;
+  --color-pink-dark: #ee475d;
+  --color-pink-two: #FF7385;
+  --color-pink-light: #FE93DB0D;
+
+  /*---- Gradients ----*/
+  --gradient-common: linear-gradient(27.19deg, #AD6FFF 11.96%, #FD98E8 57.26%, #FF7385 100.78%);
+  --gradient-common-two: linear-gradient(55.21deg, #AD6FFF 9.69%, #FD98E8 47.47%, #FF7385 83.78%);
+
+
+  /*---- Transitions ----*/
+  --transition-common: all 0.5s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  transition: all 0.5s;
+  scrollbar-color: #AD6FFF rgba(246, 246, 248, 1);
+  /* scrollbar-color: var(--gradient-common-two) rgba(246, 246, 248, 1); */
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+  background-color: rgba(246, 246, 248, 1);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(246, 246, 248, 1);
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: rgba(246, 246, 248, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-main) !important;
+  font-family: var(--font-family-Plus-Jakarta-Sans) !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+
+}
+
+.container-fluid {
+  padding-left: 60px !important;
+  padding-right: 60px !important;
+}
+
+.container-fluid-default {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+/*---- Margins ----*/
+.mb-43 {
+  margin-bottom: 43px;
+}
+
+.me-36 {
+  margin-right: 36px !important;
+}
+
+/*---- Gaps ----*/
+.gap-6 {
+  gap: 6px !important;
+}
+
+.gap-8 {
+  gap: 8px !important;
+}
+
+.gap-12 {
+  gap: 12px !important;
+}
+
+.gap-20 {
+  gap: 20px !important;
+}
+
+.gap-72 {
+  gap: 72px !important;
+}
+
+/*---- Gradients ----*/
+.gradient-common {
+  background: var(--gradient-common);
+}
+
+/*---- Text Gradients ----*/
+.gradient-text-common {
+  background: var(--gradient-common);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/*---- Deviders ----*/
+.devider-common {
+  background-color: #FFFFFF;
+  height: 100%;
+  width: 1px;
+}
+
+/*---- Buttons ----*/
+.btn-common {
+  background-color: var(--color-main);
+  border: 1px solid var(--color-main);
+  border-radius: 5px;
+  color: #ffffff;
+  /* font-family: Modern Era; */
+  font-size: 16px;
+  font-weight: 700;
+  /* line-height: 16px; */
+  line-height: 1;
+  letter-spacing: -0.02em;
+  padding: 14px 19px;
+  text-decoration: none;
+  transition: var(--transition-common);
+}
+
+.btn-common:hover {
+  background-color: var(--color-main-light);
+  border-color: var(--color-main-light);
+}
+
+.btn-bordered {
+  background-color: transparent;
+  color: var(--color-main);
+}
+
+.btn-bordered:hover {
+  background-color: var(--color-main);
+  color: #ffffff;
+}
+
+.btn-pink {
+  background-color: var(--color-pink);
+  border-color: var(--color-pink);
+}
+
+.btn-pink:hover {
+  background-color: var(--color-pink-dark);
+  border-color: var(--color-pink-dark);
+}
+
+.btn-white {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #000000;
+}
+
+.btn-white:hover {
+  background-color: var(--color-pink);
+  border-color: var(--color-pink);
+  color: #ffffff;
+}
+
+/*---- Header Global CSS - START ----*/
+.navbar-toggler {
+  display: block !important;
+  border: none !important;
+  margin-right: 12px;
+  padding: 3px 2px !important;
+}
+
+.navbar-toggler:hover,
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+
+.navbarHeader {
+  background-color: var(--color-pink-light);
+  padding: 18px 0 !important;
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: #000000;
+  /* font-family: Modern Era; */
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  padding: 10px 28px !important;
+  transition: var(--transition-common);
+}
+
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link.active {
+  color: var(--color-pink) !important;
+}
+
+.navbar-nav .nav-item:first-child .nav-link {
+  padding-left: 0 !important;
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 8px; 
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(55.21deg, #AD6FFF 9.69%, #FD98E8 47.47%, #FF7385 83.78%);
+  border-radius: 10px;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #FD98E8 #FFFAFD; 
+}
+
+/*---- Header Global CSS - END ----*/

@@ -1,0 +1,84 @@
+    <svg
+                      width="30"
+                      height="30"
+                      viewBox="0 0 30 30"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_41_4399)">
+                        <path
+                          d="M25.3125 13.125V6.5625C25.3125 6.31386 25.2137 6.0754 25.0379 5.89959C24.8621 5.72377 24.6236 5.625 24.375 5.625H5.625C5.37636 5.625 5.1379 5.72377 4.96209 5.89959C4.78627 6.0754 4.6875 6.31386 4.6875 6.5625V13.125C4.6875 24.375 15 27.1875 15 27.1875C15 27.1875 25.3125 24.375 25.3125 13.125Z"
+                          fill="url(#paint0_linear_41_4399)"
+                          fill-opacity="0.2"
+                          stroke="url(#paint1_linear_41_4399)"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M10.3125 15.9375L13.125 18.75L19.6875 12.1875"
+                          fill="url(#paint2_linear_41_4399)"
+                          fill-opacity="0.2"
+                        />
+                        <path
+                          d="M10.3125 15.9375L13.125 18.75L19.6875 12.1875"
+                          stroke="url(#paint3_linear_41_4399)"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                      <defs>
+                        <linearGradient
+                          id="paint0_linear_41_4399"
+                          x1="8.01884"
+                          y1="27.106"
+                          x2="25.9846"
+                          y2="15.169"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop stop-color="#AD6FFF" />
+                          <stop offset="0.51" stop-color="#FD98E8" />
+                          <stop offset="1" stop-color="#FF7385" />
+                        </linearGradient>
+                        <linearGradient
+                          id="paint1_linear_41_4399"
+                          x1="8.01884"
+                          y1="27.106"
+                          x2="25.9846"
+                          y2="15.169"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop stop-color="#AD6FFF" />
+                          <stop offset="0.51" stop-color="#FD98E8" />
+                          <stop offset="1" stop-color="#FF7385" />
+                        </linearGradient>
+                        <linearGradient
+                          id="paint2_linear_41_4399"
+                          x1="11.8267"
+                          y1="18.7252"
+                          x2="17.7577"
+                          y2="12.8397"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop stop-color="#AD6FFF" />
+                          <stop offset="0.51" stop-color="#FD98E8" />
+                          <stop offset="1" stop-color="#FF7385" />
+                        </linearGradient>
+                        <linearGradient
+                          id="paint3_linear_41_4399"
+                          x1="11.8267"
+                          y1="18.7252"
+                          x2="17.7577"
+                          y2="12.8397"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop stop-color="#AD6FFF" />
+                          <stop offset="0.51" stop-color="#FD98E8" />
+                          <stop offset="1" stop-color="#FF7385" />
+                        </linearGradient>
+                        <clipPath id="clip0_41_4399">
+                          <rect width="30" height="30" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
