@@ -14,17 +14,19 @@ const ENV_CONFIG: { [key in Environment]: {IMAGE_BASE_URL: string; BASE_URL: str
 
     },
     staging: {
-        BASE_URL: "https://raffstaging.makeitlive.info/services",
+        // BASE_URL: "https://raffstaging.makeitlive.info/services",
+        BASE_URL: "https://rafflebackend-production.up.railway.app/",
         WEB_URL: "https://raffstaging.makeitlive.info",
         // CLIENT_ID: "AfkKzKj5lcbqb2amgSOdyKqov4Ws1yFwFIkGI_kYQl8cR1eAooyJjmBsGZiQ4s-fhdjAU6P8n11iepTC"
         CLIENT_ID: "AfIvyc7kn0rwBpCVnXY2DBDvF093TRL38QjrtXoGEo1D31XfJHlI34qvDmyGDlXxlKsh1dCqZaJnFqnn",
         IMAGE_BASE_URL:"https://raffily.com/services"
     },
     production: {
-        BASE_URL: "https://raffily.com/services",
+        // BASE_URL: "https://raffily.com/services",
+        BASE_URL: "https://rafflebackend-production.up.railway.app/",
         WEB_URL: "https://raffily.com",
         CLIENT_ID: "AfIvyc7kn0rwBpCVnXY2DBDvF093TRL38QjrtXoGEo1D31XfJHlI34qvDmyGDlXxlKsh1dCqZaJnFqnn",
-        IMAGE_BASE_URL:"https://raffily.com/services"
+        IMAGE_BASE_URL:"https://www.raffily.com"
     },
 };
 

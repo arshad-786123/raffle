@@ -94,7 +94,6 @@ const AdminNavbar = ({ setAuthenticationModal, authenticationModal }: any) => {
         try {
             const res = await getAdminNotification();
             setNotifications(res);
-
         } catch (error) {
             console.log(error);
         }

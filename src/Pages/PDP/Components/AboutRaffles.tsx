@@ -367,7 +367,6 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
       value = maxAllowed; // Max per-person or total available limit
       errorToast(`Maximum limit reached: ${maxAllowed}`);
     }
-
     setItemValue(value);
   };
 
@@ -467,6 +466,8 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
 
   // Function to handle "Checkout Now"
   const handleCheckoutNow = () => {
+    debugger;
+    console.log(raffleData);
     // Trigger checkout process (can be implemented here)
     navigate("/user/cart");
     setShowModal(false); // Close the modal after checkout
