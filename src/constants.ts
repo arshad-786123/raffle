@@ -7,7 +7,7 @@ const env = "local" as Environment; // Change to "staging" or "production" as ne
 // Use an object to map each environment to its corresponding configuration
 const ENV_CONFIG: { [key in Environment]: {IMAGE_BASE_URL: string; BASE_URL: string; WEB_URL: string; CLIENT_ID: string } } = {
     local: {
-        BASE_URL: "https://rafflebackend-production.up.railway.app/",
+        BASE_URL: "http://localhost:5000",
         WEB_URL: "https://raffily.com",
         CLIENT_ID: "",
         IMAGE_BASE_URL:"https://raffily.com/services"
@@ -26,7 +26,7 @@ const ENV_CONFIG: { [key in Environment]: {IMAGE_BASE_URL: string; BASE_URL: str
         BASE_URL: "https://rafflebackend-production.up.railway.app/",
         WEB_URL: "https://raffily.com",
         CLIENT_ID: "AfIvyc7kn0rwBpCVnXY2DBDvF093TRL38QjrtXoGEo1D31XfJHlI34qvDmyGDlXxlKsh1dCqZaJnFqnn",
-        IMAGE_BASE_URL:"https://www.raffily.com"
+        IMAGE_BASE_URL:"https://rafflebackend-production.up.railway.app/"
     },
 };
 
