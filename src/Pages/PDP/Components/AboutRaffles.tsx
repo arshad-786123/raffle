@@ -1145,12 +1145,12 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
                             className="bg-raffles-blue text-white text-[14px] sm:text-[16px] leading-[19.2px] sm:leading-[21.6px] font-modernBold px-6 py-3 rounded-lg shadow-lg flex-grow"
                             onClick={addToCart}
                           >
-                            {raffleData?.ticket_price === `0` ? "Enter for Free" : "Enter Now"}
+                            {raffleData?.ticket_price === `0` ? "Get Free Ticket" : "Enter Now"}
                           </button>
                         )
                       ) : null
                     }
-
+  
                   </div>
                   {/* Free Postal Entry */}
                   <p className="text-[12px] sm:text-[14px] leading-[16.8px] sm:leading-[19.6px] text-raffles-light-blue font-modernRegular -tracking-2 mt-2 ml-16 w-full text-center flex items-center justify-center custom-free-postText">
