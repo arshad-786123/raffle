@@ -6,7 +6,7 @@ import { errorToast } from '../../../Utils/Toast/error.toast';
 import { getGuestRegisteredData } from '../../../Services/Authentication/register';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { storeUser } from '@/Redux/User/userSlice';
+import { storeGuestUser, storeUser } from '@/Redux/User/userSlice';
 import Cookies from 'js-cookie';
 
 interface FreeRaffleEntryFormProps {
@@ -71,6 +71,7 @@ const FreeRaffleEntryForm: React.FC<FreeRaffleEntryFormProps> = ({
                         secure: false,
                     });
                     dispatch(storeUser(result.result.user));
+                    dispatch(storeGuestUser(result.result.user));
                     setIsFreeModalOpen(false);
                     window.location.reload();
                 }
@@ -90,8 +91,9 @@ const FreeRaffleEntryForm: React.FC<FreeRaffleEntryFormProps> = ({
                     sameSite: 'strict',
                     secure: false,
                 });
-                
+
                 dispatch(storeUser(result.result.user));
+                dispatch(storeGuestUser(result.result.user));
                 setIsFreeModalOpen(false);
                 window.location.reload();
             }

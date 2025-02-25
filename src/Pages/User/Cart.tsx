@@ -36,12 +36,15 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
   });
 
   const userData = useSelector((state: any) => state.reducer.user);
+
   console.log("userData", userData);
 
   const { state, pathname } = useLocation();
   console.log("state", state);
 
   useEffect(() => {
+    console.log("userData: ", userData)
+
     // Scroll to top when the component mounts
     window.scrollTo(0, 0);
   }, []);
