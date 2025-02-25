@@ -49,6 +49,25 @@ export const getUserRegisteredData = async (
   }
 };
 
+export const getGuestRegisteredData = async (
+  userData: UserRegister
+): Promise<RegisterResponse> => {
+  try {
+    const response = await API_INSTANCE.post(
+      API_ENDPOINTS.GUEST_REGISTER,
+      userData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data: RegisterResponse = response.data; // Assuming response.data is an array of Country objects
+    return data;
+  } catch (error) {
+    throw error; // Propagate the error for handling upstream
+  }
+};
 interface UserRegisterGoogle {
   userId: string;
   email: string;

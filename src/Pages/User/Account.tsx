@@ -649,7 +649,7 @@ const UserAccount: React.FC<UserAccountProps> = ({
                                         placeholder="Enter the name"
                                         name="firstname"
                                         value={userDetails?.firstname}
-                                        id=""
+                                        id="name"
                                     />
 
                                 </div>
@@ -659,7 +659,7 @@ const UserAccount: React.FC<UserAccountProps> = ({
                                     Last Name
                                 </h4>
                                 <div className="flex gap-1">
-                                    <input onChange={handleChange} className='p-3 outline-none rounded-md border-none w-[100%]' type="text" placeholder='Enter the name' name="lastname" value={userDetails?.lastname} id="" />
+                                    <input onChange={handleChange} className='p-3 outline-none rounded-md border-none w-[100%]' type="text" placeholder='Enter the name' name="lastname" value={userDetails?.lastname} id="lastname" />
                                 </div>
                             </div>
 

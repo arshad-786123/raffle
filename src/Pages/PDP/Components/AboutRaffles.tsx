@@ -411,11 +411,24 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
   };
 
   const addToCart = () => {
+
     // Check if selected answer index is not null and matches the correct answer index before adding to cart
     if (selectedAnswerIndex === null) {
       errorToast("Please select the answer.");
-    } else if (selectedAnswerIndex.toString() == raffleData?.correctAnswer) {
-      // dispatch(clearCart());
+    } 
+    else if(raffleData.isFreeRaffle && selectedAnswerIndex.toString() == raffleData?.correctAnswer){
+      if (
+        userData?.user?.role!== "Business" &&
+        userData?.user?.role!== "ADMIN"
+      ) {
+        dispatch(addItemToCart({ raffleData, itemValue }));
+        successToast("Raffle added to your basket!");
+        navigate('/user/cart')
+      } else {
+        errorToast("You cannot buy this raffle");
+      }
+    }
+    else if (selectedAnswerIndex.toString() == raffleData?.correctAnswer) {
       if (
         userData?.user?.role !== "Business" &&
         userData?.user?.role !== "ADMIN"
@@ -426,7 +439,8 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
       } else {
         errorToast("You cannot buy this raffle");
       }
-    } else {
+    } 
+    else {
       errorToast("Incorrect answer.");
     }
   };
@@ -1061,7 +1075,7 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
                     {/* Quantity Input Field */}
 
                     {
-                      !(
+                    !raffleData.isFreeRaffle &&  !(
                         state?.isOwner === true ||
                         Number(raffleData?.totalPurchasedTicket) >= Number(raffleData?.ticket_set_prize) ||
                         new Date() >= new Date(raffleData?.cronTime)

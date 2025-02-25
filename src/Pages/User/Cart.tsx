@@ -13,6 +13,7 @@ import { errorToast } from "../../Utils/Toast/error.toast";
 import { successToast } from "../../Utils/Toast/success.toast";
 import { updateRaffleStatus } from "@/Services/Admin/getDashboardData";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import FreeRaffleEntryForm from "../Authentication/Components/FreeRaffleEntryForm";
 
 
 const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
@@ -21,8 +22,18 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
   const [isLoading, setIsLoading] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("acquired");
   const [isAgreed, setIsAgreed] = useState(false);
-
+  const [isFreeModalOpen, setIsFreeModalOpen] = useState<boolean>(false);
   // const [userData, setUserData] = useState({});
+ 
+  const [formData, setFormData] = useState({
+    firstname: "",
+    Role:"Customer",
+    lastname: "",
+    dialCode: '+44',
+    password: "Anthem#11",
+    email: "",
+    phone: "",
+  });
 
   const userData = useSelector((state: any) => state.reducer.user);
   console.log("userData", userData);
@@ -64,8 +75,6 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
 
   const handleRemoveCart = (item: any, i: any) => {
     dispatch(removeItemFromCart(item));
-
-
   };
   console.log("userCart", userCart);
 
@@ -79,22 +88,6 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
     raffleData: [],
   });
   const [isTableReady, setIsTableReady] = useState(false);
-
-  // const handlePaymentNavigate = () => {
-  //     if (!userData?.user?.role) {
-  //         return setAuthenticationModal({ ...authenticationModal, isSignInOpen: true })
-  //     } else {
-  //         navigate("/user/payment", {
-  //             state: {
-  //                 totalPrice,
-  //                 discount
-
-  //             }
-  //         })
-  //     }
-
-  // }
-
   const [isPayPalReady, setIsPayPalReady] = useState(false);
   const [payPalOrderId, setPayPalOrderId] = useState<string | null>(null);
   const [clientId, setClientId] = useState<string>("");
@@ -107,16 +100,20 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
     setPaymentMethod("paypal");
   };
 
-
   const handlePaymentNavigate = async () => {
+    debugger;
     try {
-      if (!userData?.user?.role) {
+      if (!userData?.user?.role && userCart[0].isFreeRaffle) {
+        setIsFreeModalOpen(true);
+        return;
+      }
+      else if (!userData?.user?.role) {
         return setAuthenticationModal({
           ...authenticationModal,
           isSignInOpen: true,
         });
-
-      } else {
+      }
+      else {
 
         if (userCart.length === 0) {
           return errorToast("Your cart is empty. Please add items before checkout.");
@@ -196,8 +193,6 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
   };
 
 
-
-
   useEffect(() => {
     // Make sure PayPal script is loaded
     const loadPayPalScript = async () => {
@@ -216,113 +211,6 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
     loadPayPalScript();
   }, []);
 
-
-
-  // const handlePaymentNavigate = async () => {
-  //   try {
-  //     if (!userData?.user?.role) {
-  //       return setAuthenticationModal({
-  //         ...authenticationModal,
-  //         isSignInOpen: true,
-  //       });
-  //     }
-
-  //     setIsLoading(true);
-
-  //     const paymentData = {
-  //       raffleData: userCart,
-  //       paymentMethod,
-  //       paymentInfo: {},
-  //       totalPrice,
-  //       coupon: couponName || null,
-  //     };
-
-  //     const response = await createOrder(paymentData);
-  //     console.log("response", response);
-
-  //     // Handle redirection or set data for rendering PayPal buttons
-  //     if (paymentMethod === "paypal") {
-  //       setPayPalOrderId(response?.result?.orderId);
-  //       console.log("PayPal Order ID Set:", response?.result?.orderId);
-  //       setIsPayPalReady(true);
-  //       console.log("isPayPalReady Set to True");
-  //     } else if (paymentMethod === "acquired" && response?.result?.paymentLink) {
-  //       window.location.href = response.result.paymentLink; // Redirect for acquired payment
-  //     } else if (response?.result?.redirectTo) {
-  //       window.location.href = response.result.redirectTo; // Redirect for free raffle completion
-  //     }
-
-  //     setIsLoading(false);
-  //   } catch (error: any) {
-  //     console.error("Error during payment initiation:", error.message);
-  //     setIsLoading(false);
-  //     errorToast(error.message);
-  //   }
-  // };
-
-  // const handleCouponSubmit = async () => {
-  //   try {
-  //     // Step 1: Validate coupon
-  //     const email = userData?.user?.email;
-  //     const raffleData = userCart.map((item: any) => ({
-  //       raffleId: item._id,
-  //       quantity: item.qty, // Include quantity
-  //     }));
-
-
-  //     const couponResult = await API_INSTANCE.post(
-  //       API_ENDPOINTS.VALIDATE_COUPON,
-  //       { couponCode: couponName, email, raffleData },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-
-  //     if (couponResult.data.isValid) {
-  //       const couponData = couponResult.data.coupon;
-
-  //       // Step 2: Check if the total price is greater than or equal to the coupon value
-  //       let calculatedDiscount = 0;
-  //       if (couponData.type === "fixed") {
-  //         calculatedDiscount = couponData.amount;
-  //       } else if (couponData.type === "percentage") {
-  //         calculatedDiscount = (totalPrice * couponData.amount) / 100;
-  //       }
-
-  //       // If the total price is less than the coupon value, show an error
-  //       if (calculatedDiscount > totalPrice) {
-  //         calculatedDiscount = totalPrice; // Ensure the total price never goes below 0
-  //       }
-
-
-  //       // Step 3: Update user data with coupon
-  //       const updateResult = await API_INSTANCE.post(
-  //         API_ENDPOINTS.UPDATE_USER_DATA,
-  //         { coupon: couponData },
-  //         {
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //         }
-  //       );
-
-  //       if (updateResult.data.success) {
-  //         setDiscount(calculatedDiscount);
-  //         successToast("You get a discount");
-  //         console.log("Updated user data:", updateResult.data.result);
-  //       } else {
-  //         errorToast("Failed to update user data");
-  //       }
-  //     } else {
-  //       errorToast(couponResult.data.message || "Invalid Coupon Code");
-  //     }
-  //   } catch (error: any) {
-  //     console.error("Error:", error);
-  //     errorToast(error.response?.data?.message || "Something went wrong, please try again.");
-  //   }
-  // };
 
   const handleCouponSubmit = async () => {
     try {
@@ -771,6 +659,9 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
                 <div className="w-[100%] my-4"></div>
               </form>
             </div>
+            {
+              isFreeModalOpen && <FreeRaffleEntryForm userRegisterData={formData} raffleId={'uniqueId'} setUserRegisterData={setFormData} isFreeModalOpen={isFreeModalOpen} setIsFreeModalOpen={setIsFreeModalOpen} />
+            }
           </div>
         </div>
       </div >

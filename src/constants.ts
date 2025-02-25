@@ -1,10 +1,8 @@
 
 type Environment = "local" | "staging" | "production";
-const env = (process.env.NODE_ENV as Environment) || "local"; 
-
 
 // Ensure env is treated as one of the possible values
-// const env = "local" as Environment; // Change to "staging" or "production" as needed
+const env = "local" as Environment; // Change to "staging" or "production" as needed
 
 // Use an object to map each environment to its corresponding configuration
 const ENV_CONFIG: { [key in Environment]: {IMAGE_BASE_URL: string; BASE_URL: string; WEB_URL: string; CLIENT_ID: string } } = {
@@ -13,6 +11,7 @@ const ENV_CONFIG: { [key in Environment]: {IMAGE_BASE_URL: string; BASE_URL: str
         WEB_URL: "https://raffily.com",
         CLIENT_ID: "",
         IMAGE_BASE_URL:"https://raffstaging.makeitlive.info/services/"
+
     },
     staging: {
         // BASE_URL: "https://raffstaging.makeitlive.info/services",
@@ -27,7 +26,7 @@ const ENV_CONFIG: { [key in Environment]: {IMAGE_BASE_URL: string; BASE_URL: str
         BASE_URL: "https://rafflebackend-production.up.railway.app/",
         WEB_URL: "https://raffily.com",
         CLIENT_ID: "AfIvyc7kn0rwBpCVnXY2DBDvF093TRL38QjrtXoGEo1D31XfJHlI34qvDmyGDlXxlKsh1dCqZaJnFqnn",
-        IMAGE_BASE_URL:"https://www.raffily.com/services"
+        IMAGE_BASE_URL:"https://raffstaging.makeitlive.info/services/"
     },
 };
 
@@ -53,6 +52,7 @@ export const API_ENDPOINTS = {
 
     //authentication routes
     USER_REGISTER: "/auth/register",
+    GUEST_REGISTER: "/auth/guest_register",
     DELETE_USER: "/auth/user/delete/:id",
     USER_REGISTER_WITH_GOOGLE: "/auth/google_login",
     CSFORM_REGISTER: "/auth/comming_soon",
