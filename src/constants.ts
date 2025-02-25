@@ -11,7 +11,6 @@ const ENV_CONFIG: { [key in Environment]: {IMAGE_BASE_URL: string; BASE_URL: str
         WEB_URL: "https://raffily.com",
         CLIENT_ID: "",
         IMAGE_BASE_URL:"https://raffstaging.makeitlive.info/services/"
-
     },
     staging: {
         // BASE_URL: "https://raffstaging.makeitlive.info/services",
@@ -32,7 +31,6 @@ const ENV_CONFIG: { [key in Environment]: {IMAGE_BASE_URL: string; BASE_URL: str
 
 // Export the configuration for the current environment
 export const CONSTANT_DATA = ENV_CONFIG[env];
-
 
 
 

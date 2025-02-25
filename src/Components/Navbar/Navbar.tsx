@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import mainLogo from "../../assets/main_logo.png";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { storeUser } from "../../Redux/User/userSlice";
+import { storeGuestUser, storeUser } from "../../Redux/User/userSlice";
 import Cookies from "js-cookie";
 import { AlignJustify, ArrowRight } from "lucide-react";
 import { clearCart, selectCartCount } from "../../Redux/Cart/cartSlice";
@@ -95,6 +95,7 @@ const Navbar = ({ setAuthenticationModal, authenticationModal }: any) => {
     Cookies.remove("accessToken");
     Cookies.remove("refreshToken");
     dispatch(storeUser(""));
+    dispatch(storeGuestUser(""));
     dispatch(clearCart());
     navigate("/");
   };

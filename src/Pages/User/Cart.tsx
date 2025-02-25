@@ -14,6 +14,7 @@ import { successToast } from "../../Utils/Toast/success.toast";
 import { updateRaffleStatus } from "@/Services/Admin/getDashboardData";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import FreeRaffleEntryForm from "../Authentication/Components/FreeRaffleEntryForm";
+import { storeGuestUser } from "@/Redux/User/userSlice";
 
 
 const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
@@ -23,11 +24,13 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
   const [paymentMethod, setPaymentMethod] = useState("acquired");
   const [isAgreed, setIsAgreed] = useState(false);
   const [isFreeModalOpen, setIsFreeModalOpen] = useState<boolean>(false);
-  // const [userData, setUserData] = useState({});
- 
+  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState<number | null>(
+    null
+  );
+
   const [formData, setFormData] = useState({
     firstname: "",
-    Role:"Customer",
+    Role: "Customer",
     lastname: "",
     dialCode: '+44',
     password: "Anthem#11",
@@ -37,14 +40,10 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
 
   const userData = useSelector((state: any) => state.reducer.user);
 
-  console.log("userData", userData);
-
   const { state, pathname } = useLocation();
   console.log("state", state);
 
   useEffect(() => {
-    console.log("userData: ", userData)
-
     // Scroll to top when the component mounts
     window.scrollTo(0, 0);
   }, []);
@@ -106,11 +105,11 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
   const handlePaymentNavigate = async () => {
     debugger;
     try {
-      if (!userData?.user?.role && userCart[0].isFreeRaffle) {
+      if (!userData?.guestuser?.role && userCart[0].isFreeRaffle) {
         setIsFreeModalOpen(true);
         return;
       }
-      else if (!userData?.user?.role) {
+      else if (!userData?.user?.role && !userCart[0].isFreeRaffle) {
         return setAuthenticationModal({
           ...authenticationModal,
           isSignInOpen: true,
@@ -167,11 +166,12 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
           }
         }
 
-
-
         setIsLoading(false);
-        if (!response.success) return errorToast(response.message);
-
+        if (!response.success){
+          dispatch(storeGuestUser(""))
+          return errorToast(response.message);
+        } 
+        else{
         // setIsPaymentDone(true);
         // successToast('Payment Successful!');
         // successToast('success', 'Payment Successful!', 'Get 1 more free ticket by simply sharing this link!', 'Share', '#FF6A78');
@@ -179,12 +179,11 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
         setDataSet(response.result);
         setIsTableReady(true);
         setIsThankYou(true);
-
+        dispatch(storeGuestUser(""))
         // // Clear raffle from cart
         // dispatch(clearCart());
-
-
         return response.result;
+        }
       }
 
       // setIsPaymentDone(true)
@@ -196,6 +195,7 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
 
 
   useEffect(() => {
+    console.log(userCart);
     // Make sure PayPal script is loaded
     const loadPayPalScript = async () => {
       try {
@@ -460,6 +460,33 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
                 £{(totalPrice - discount).toFixed(2)}
               </h5>
               <br />
+{/*            
+              <div className="w-full mt-6 bg-white md:py-4 rounded-3xl text-raffles-light-blue block">
+                    <p className="text-base sm:text-lg font-modernBold">
+                      Question
+                    </p>
+                    <p className="text-[12px] sm:text-[14px] leading-[16.8px] sm:leading-[19.6px] text-raffles-light-blue font-modernRegular mt-1">
+                      {userCart[0].question}
+                    </p>
+                    <select
+                      value={selectedAnswerIndex ?? ""}
+                      onChange={(e) =>
+                        setSelectedAnswerIndex(Number(e.target.value))
+                      }
+                      className="w-full mt-3 p-3 border border-gray-300 rounded-md text-gray-500"
+                    >
+                      <option value="" disabled>
+                        Select your answer
+                      </option>
+                      {userCart[0].answers?.map(
+                        (answer: string, index: number) => (
+                          <option key={index} value={index}>
+                            {answer}
+                          </option>
+                        )
+                      )}
+                    </select>
+                  </div> */}
               <form
                 onSubmit={(e) => {
                   handleSubmit(e);

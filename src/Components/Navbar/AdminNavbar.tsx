@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Dropdown } from 'flowbite-react';
 import Cookies from "js-cookie";
 import { useDispatch } from 'react-redux';
-import { storeUser } from '../../Redux/User/userSlice';
+import { storeGuestUser, storeUser } from '../../Redux/User/userSlice';
 import { clearCart } from '../../Redux/Cart/cartSlice';
 import { getCategories, ICategory } from '../../Services/Raffle/categories';
 import { listCategoryWiseRaffle } from '../../Services/Raffle/listRaffle';
@@ -179,6 +179,7 @@ const AdminNavbar = ({ setAuthenticationModal, authenticationModal }: any) => {
         Cookies.remove('refreshToken')
         localStorage.removeItem("selectedImage");
         dispatch(storeUser(""))
+        dispatch(storeGuestUser(""))
         dispatch(clearCart());
         navigate("/");
     }

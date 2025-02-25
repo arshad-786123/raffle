@@ -413,36 +413,15 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
   const addToCart = () => {
 
     // Check if selected answer index is not null and matches the correct answer index before adding to cart
-    if (selectedAnswerIndex === null) {
-      errorToast("Please select the answer.");
-    } 
-    else if(raffleData.isFreeRaffle && selectedAnswerIndex.toString() == raffleData?.correctAnswer){
-      if (
-        userData?.user?.role!== "Business" &&
-        userData?.user?.role!== "ADMIN"
-      ) {
+      if (userData?.user?.role!== "Business" && userData?.user?.role!== "ADMIN") 
+      {
         dispatch(addItemToCart({ raffleData, itemValue }));
         successToast("Raffle added to your basket!");
         navigate('/user/cart')
-      } else {
+      } 
+      else {
         errorToast("You cannot buy this raffle");
       }
-    }
-    else if (selectedAnswerIndex.toString() == raffleData?.correctAnswer) {
-      if (
-        userData?.user?.role !== "Business" &&
-        userData?.user?.role !== "ADMIN"
-      ) {
-        dispatch(addItemToCart({ raffleData, itemValue }));
-        successToast("Raffle added to your basket!");
-        setShowModal(true);
-      } else {
-        errorToast("You cannot buy this raffle");
-      }
-    } 
-    else {
-      errorToast("Incorrect answer.");
-    }
   };
   const endDate = new Date(raffleData.cronTime); // Using 'cronTime' as an example
 
@@ -1150,7 +1129,7 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
                         )
                       ) : null
                     }
-  
+
                   </div>
                   {/* Free Postal Entry */}
                   <p className="text-[12px] sm:text-[14px] leading-[16.8px] sm:leading-[19.6px] text-raffles-light-blue font-modernRegular -tracking-2 mt-2 ml-16 w-full text-center flex items-center justify-center custom-free-postText">

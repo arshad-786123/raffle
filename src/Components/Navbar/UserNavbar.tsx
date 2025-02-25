@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { increment } from "../../Redux/Counter/counterSlice";
 import { checkType } from "../../Services/Authentication/checkType";
 import Cookies from "js-cookie";
-import { storeUser } from "../../Redux/User/userSlice";
+import { storeGuestUser, storeUser } from "../../Redux/User/userSlice";
 import { fetchAccessToken } from "../../Services/Middleware/fetchAccessToken";
 import { Dropdown } from "flowbite-react";
 import { CONSTANT_DATA } from "../../constants";
@@ -336,6 +336,7 @@ const UserNavbar: React.FC<UserNavbarProps> = ({
     localStorage.removeItem("persist:root");
 
     dispatch(storeUser(""));
+    dispatch(storeGuestUser(""));
     dispatch(clearCart());
     navigate("/");
   };

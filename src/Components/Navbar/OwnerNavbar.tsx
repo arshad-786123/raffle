@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { checkType } from "../../Services/Authentication/checkType";
 import { Dropdown } from "flowbite-react";
 import Cookies from "js-cookie";
-import { storeUser } from "../../Redux/User/userSlice";
+import { storeGuestUser, storeUser } from "../../Redux/User/userSlice";
 import { CONSTANT_DATA } from "../../constants";
 import { clearCart } from "../../Redux/Cart/cartSlice";
 import noimage from "../../assets/no-image-user.png";
@@ -320,6 +320,8 @@ const OwnerNavbar: React.FC<OwnerNavbarProps> = ({
     localStorage.removeItem("persist:root");
 
     dispatch(storeUser(""));
+    dispatch(storeGuestUser(""));
+
     dispatch(clearCart());
     navigate("/");
   };

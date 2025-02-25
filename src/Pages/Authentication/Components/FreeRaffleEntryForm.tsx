@@ -70,7 +70,7 @@ const FreeRaffleEntryForm: React.FC<FreeRaffleEntryFormProps> = ({
                         sameSite: 'strict',
                         secure: false,
                     });
-                    dispatch(storeUser(result.result.user));
+                    // dispatch(storeUser(result.result.user));
                     dispatch(storeGuestUser(result.result.user));
                     setIsFreeModalOpen(false);
                     window.location.reload();
@@ -92,7 +92,7 @@ const FreeRaffleEntryForm: React.FC<FreeRaffleEntryFormProps> = ({
                     secure: false,
                 });
 
-                dispatch(storeUser(result.result.user));
+                // dispatch(storeUser(result.result.user));
                 dispatch(storeGuestUser(result.result.user));
                 setIsFreeModalOpen(false);
                 window.location.reload();

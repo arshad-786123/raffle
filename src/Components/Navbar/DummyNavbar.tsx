@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { increment } from '../../Redux/Counter/counterSlice';
 import { checkType } from '../../Services/Authentication/checkType';
 import Cookies from "js-cookie";
-import { storeUser } from '../../Redux/User/userSlice';
+import { storeGuestUser, storeUser } from '../../Redux/User/userSlice';
 import { fetchAccessToken } from '../../Services/Middleware/fetchAccessToken';
 import { Dropdown } from 'flowbite-react';
 import { clearCart } from '../../Redux/Cart/cartSlice';
@@ -78,6 +78,7 @@ const DummyNavbar = () => {
         Cookies.remove('accessToken')
         Cookies.remove('refreshToken')
         dispatch(storeUser(""))
+        dispatch(storeGuestUser(""))
         dispatch(clearCart())
         navigate("/");
     }
