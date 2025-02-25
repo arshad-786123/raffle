@@ -72,6 +72,7 @@ const FreeRaffleEntryForm: React.FC<FreeRaffleEntryFormProps> = ({
                     });
                     dispatch(storeUser(result.result.user));
                     setIsFreeModalOpen(false);
+                    window.location.reload();
                 }
                 else{
                     return errorToast(result.message)
@@ -89,13 +90,15 @@ const FreeRaffleEntryForm: React.FC<FreeRaffleEntryFormProps> = ({
                     sameSite: 'strict',
                     secure: false,
                 });
+                
                 dispatch(storeUser(result.result.user));
                 setIsFreeModalOpen(false);
+                window.location.reload();
             }
         } catch (error: any) {
             console.log(error.message);
         }
-    }
+    }   
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = e.target;

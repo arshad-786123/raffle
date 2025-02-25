@@ -140,7 +140,6 @@ const UserCart = ({ authenticationModal, setAuthenticationModal }: any) => {
 
         if (response?.result?.redirectTo) {
           window.location.href = response?.result?.redirectTo; // Redirect to Acquired for payment approval
-
         }
 
         if (paymentMethod === "acquired" && response?.result?.result?.paymentLink) {
