@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Label, Modal, Select } from 'flowbite-react';
 import google from '../../../assets/authentication/google.png'
 import apple from '../../../assets/authentication/apple.png'
@@ -16,6 +16,11 @@ import { storeUser } from '../../../Redux/User/userSlice';
 import { useDispatch } from 'react-redux';
 import { User } from '../../../Utils/Interface/Customer';
 import FacebookLogin from 'react-facebook-login';
+import { ArrowLeft, Check, Lock, PartyPopper } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/Components/signupui/button';
+import { Progress } from '@/Components/signupui/progress';
+import { Checkbox } from '@/Components/signupui/checkbox';
 
 interface SignUpProps {
     authenticationModal: any;
@@ -27,8 +32,49 @@ interface SignUpProps {
 }
 
 
-const SignUp: React.FC<SignUpProps> = ({ authenticationModal, setAuthenticationModal, setUserRegisterData, userRegisterData, onSuccess, onFailure }: any) => {
 
+function CountdownTimer() {
+    const [timeLeft, setTimeLeft] = useState(10000) // 2 hours, 46 minutes, 40 seconds in seconds
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setTimeLeft((prevTime) => {
+                if (prevTime <= 1) {
+                    clearInterval(timer)
+                    return 0
+                }
+                return prevTime - 1
+            })
+        }, 1000)
+
+        return () => clearInterval(timer)
+    }, [])
+
+    const hours = Math.floor(timeLeft / 3600)
+    const minutes = Math.floor((timeLeft % 3600) / 60)
+    const seconds = timeLeft % 60
+
+    return (
+        <span className="text-2xl font-bold text-red-500 animate-pulse-fast">
+            {hours.toString().padStart(2, "0")}:{minutes.toString().padStart(2, "0")}:{seconds.toString().padStart(2, "0")}
+        </span>
+    )
+}
+
+
+const SignUp: React.FC<SignUpProps> = ({ authenticationModal, setAuthenticationModal, setUserRegisterData, userRegisterData, onSuccess, onFailure }: any) => {
+    const [step, setStep] = useState(1)
+
+    const steps = [
+        { number: 1, title: "Email", description: "Your contact" },
+        { number: 2, title: "Create Account", description: "Set up access" },
+    ]
+
+    const [progress, setProgress] = useState(50)
+
+    useEffect(() => {
+        setProgress(step === 1 ? 50 : 100)
+    }, [step])
     const onClose = (): void => {
         setAuthenticationModal({
             isSignUp1Step: false,
@@ -72,7 +118,6 @@ const SignUp: React.FC<SignUpProps> = ({ authenticationModal, setAuthenticationM
 
 
     const handleSignUp1Step = () => {
-
         if (userRegisterData.email.trim() === "") {
             return errorToast("Please enter your email address")
         } else if (!validateEmail(userRegisterData.email.trim())) {
@@ -81,9 +126,6 @@ const SignUp: React.FC<SignUpProps> = ({ authenticationModal, setAuthenticationM
         else if (userRegisterData.role.trim() === "") {
             return errorToast("Please select the role")
         }
-
-
-
         if (userRegisterData.role === "Business") {
             setAuthenticationModal({
                 isSignUpOpen: false,
@@ -93,7 +135,8 @@ const SignUp: React.FC<SignUpProps> = ({ authenticationModal, setAuthenticationM
                 isSignUp2Step: false,
                 isForgotPassOpen: false
             })
-        } else {
+        } 
+        else {
             setAuthenticationModal({
                 isSignUpOpen: false,
                 isSignInOpen: false,
@@ -218,35 +261,6 @@ const SignUp: React.FC<SignUpProps> = ({ authenticationModal, setAuthenticationM
         return
     };
 
-    // const handleFacebookResponse = async (response: any) => {
-    //     try {
-    //         const { accessToken, userID, name, email } = response;
-    //         const payload = {
-    //             userId: userID,
-    //             email: email,
-    //             name: name,
-    //             role: userRegisterData.role,
-    //             loginType: 'Facebook',
-    //         };
-    //         const apiResponse = await socialLogin(payload);
-
-    //         if (apiResponse.success) {
-    //             const { accessToken, refreshToken, user } = apiResponse.result;
-    //             Cookies.set('accessToken', accessToken);
-    //             Cookies.set('refreshToken', refreshToken);
-    //             dispatch(storeUser(user));
-    //             successToast('Successfully logged in with Facebook');
-    //             onClose();
-    //         } else {
-    //             errorToast(apiResponse.message || 'Failed to log in with Facebook');
-    //         }
-    //     } catch (error) {
-    //         errorToast('An error occurred while logging in with Facebook');
-    //     }
-    // };
-
-
-
     const handleChange = (e: any) => {
         const { name, value } = e.target;
         setUserRegisterData((prev: UserRegister) => {
@@ -258,125 +272,175 @@ const SignUp: React.FC<SignUpProps> = ({ authenticationModal, setAuthenticationM
     }
 
     return (
-        <div >
+        <>
             <Toaster position="top-right"
                 reverseOrder={false} />
             <Modal
-                className='bg-[#160B3A]'
-                dismissible
                 position="center"
                 show={authenticationModal.isSignUpOpen}
                 onClose={onClose}
+                dismissible
                 popup
+                theme={{
+                    content: {
+                        base: "bg-transparent shadow-none",
+                    },
+                }}
             >
-                <div className='rounded-md'>
-                    <Modal.Header className='bg-white  rounded-t-md' />
+                <div className='rounded-xs'>
+                    {/* <Modal.Body style={{ fontFamily: "poppins, sans-serif" }}> */}
+                    <div style={{ fontFamily: "poppins, sans-serif" }} className="py-6 flex items-center justify-center">
+                        <div className="w-full max-w-md bg-white rounded-lg overflow-hidden">
+                            <div className="px-4 space-y-6">
+                                {/* Header with Back Button and Progress */}
+                                <header className="flex items-center justify-between">
+                                    {step > 1 && (
+                                        <button onClick={() => setStep((prev) => prev - 1)} className="p-2 hover:bg-gray-100 rounded-full">
+                                            <ArrowLeft className="w-5 h-5 text-gray-600" />
+                                        </button>
+                                    )}
+                                    <div className="flex space-x-2">
+                                        <Button variant="ghost" asChild>
+                                            <Link to={'#'} onClick={handleSignIn}>Sign In</Link>
+                                        </Button>
+                                        <Button className="bg-pink-500 text-white hover:bg-pink-600" onClick={handleSignUp}>Sign Up</Button>
+                                    </div>
+                                </header>
+                                {/* Progress Steps */}
+                                <div className="space-y-2">
+                                    <div className="flex justify-between text-sm font-medium">
+                                        {steps.map((s) => (
+                                            <div
+                                                key={s.number}
+                                                className={`flex flex-col items-center ${step >= s.number ? "text-purple-700" : "text-gray-400"}`}
+                                            >
+                                                <span>{s.title}</span>
+                                                <span className="text-xs text-gray-500">{s.description}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <Progress value={progress} className="h-3 transition-all duration-500 ease-in-out" />
+                                </div>
 
-                    <Modal.Body className="bg-white text-secondary  h-full xs:h-auto rounded-b-md" style={{ fontFamily: "poppins, sans-serif" }}>
+                                <div className="text-center space-y-2">
+                                    <h1 className="text-3xl font-bold tracking-tight">Create Your Raffily Account – Join 10,000+ Winners!</h1>
+                                    <p className="text-lg text-gray-600">It takes seconds to enter for free – No payment required!</p>
+                                </div>
+                                {/* Security Trust Badges */}
+                                <div className="flex justify-center items-center space-x-4 text-sm text-gray-600">
+                                    <span className="flex items-center">
+                                        <Lock className="w-4 h-4 mr-1" /> SSL Secure
+                                    </span>
+                                    <span className="flex items-center">
+                                        <Check className="w-4 h-4 mr-1" /> Verified Entries
+                                    </span>
+                                    <span className="flex items-center">
+                                        <PartyPopper className="w-4 h-4 mr-1" /> 10,000+ Winners
+                                    </span>
+                                </div>
 
-                        <div className='cursor-pointer  m-auto rounded-md flex items-center justify-between  w-[250px] border-[1px] border-black'>
-                            <div onClick={handleSignIn} className={`${authenticationModal.isSignInOpen && " cursor-pointer bg-[#FF6A78]"} py-3 px-8 text-black`}>
-                                Sign in
-                            </div>
-                            <div onClick={handleSignUp} className={`${authenticationModal.isSignUpOpen && "cursor-pointer  bg-[#FF6A78]"} py-3 px-8 text-black`}>
-                                Sign up
-                            </div>
-                        </div>
-                        <div className='mt-6'>
-                            <h3 className='text-center text-md lg:text-lg font-bold tracking-wider text-black  '>Create your Raffily account and</h3>
-                            <h3 className='text-center text-md lg:text-lg font-bold tracking-wider text-black'>join the action!</h3>
-                        </div>
-                        <div className='mt-4'>
-                            <div className='flex items-center gap-4 rounded-md p-2 border-[1px] mt-2'>
-                                <input onChange={handleChange} value={userRegisterData.email} className='border-none outline-none w-[100%] text-black' type="email" placeholder='Email' name="email" id="email" />
-                            </div>
-                            {/* <div className='flex items-center justify-between gap-4 rounded-md p-4 border-[1px] mt-2'> */}
-                            {/* <input className='border-none outline-none' type="text" placeholder='Business or Customer' name="email" id="email" />
-                                <svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.404281 0.457407C0.736295 -0.0535613 1.3419 -0.136404 1.75694 0.272371L7.57145 5.99929L13.386 0.272371C13.8011 -0.136404 14.4066 -0.0535613 14.7387 0.457407C15.0707 0.968359 15.0034 1.71392 14.5883 2.12276L8.17261 8.44173C7.82115 8.78785 7.32175 8.78785 6.9703 8.44173L0.554576 2.12276C0.139542 1.71392 0.0722541 0.968359 0.404281 0.457407Z" fill="#28303F" fill-opacity="0.41" />
-                                </svg> */}
-                            <div className='w-full'>
-                                {/* <Select
-                                    onChange={handleChange}
-                                    value={userRegisterData.role}
-                                    name="role"
-                                    aria-placeholder='Business or Customer'
-                                    className='rounded-md mt-2'
-                                    id="countries"
-                                    required
-                                    style={{ backgroundColor: 'white', color: 'gray', padding: '10px', height: '55px', border: '1px solid lightgray', outline: 'none', fontSize: '16px', letterSpacing: '.5px', fontWeight: '400', cursor: 'pointer' }}
+                                <div className='mt-4'>
+                                    <div className='flex items-center gap-4 rounded-md p-2 border-[1px] mt-2'>
+                                        <input onChange={handleChange} value={userRegisterData.email} className='border-none outline-none w-[100%] text-black' type="email" placeholder='Email' name="email" id="email" />
+                                    </div>
+                                    <div className='w-full'>
+                                        <Select
+                                            onChange={handleChange}
+                                            value={userRegisterData.role || ""}
+                                            name="role"
+                                            className='rounded-md mt-2'
+                                            id="countries"
+                                            required
+                                            style={{ backgroundColor: 'white', color: 'gray', padding: '10px', height: '55px', border: '1px solid lightgray', outline: 'none', fontSize: '16px', letterSpacing: '.5px', fontWeight: '400', cursor: 'pointer' }}
+                                        >
+                                            <option value="" selected>Select Role</option>
+                                            <option value="Business">I want to launch a raffle!</option>
+                                            <option value="Customer"> I want to enter Raffles!</option>
+                                        </Select>
+                                    </div>
+
+                                    {/* </div> */}
+                                </div>
+                                <Button
+                                    className="w-full h-12 text-lg font-bold bg-purple-700 hover:bg-purple-800 hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-150 text-white"
+                                    onClick={() => { handleSignUp1Step() }}
                                 >
-                                    <option >Business
-                                    </option>
-                                    <option>Customer</option>
-                                </Select> */}
-                                <Select
-                                    onChange={handleChange}
-                                    value={userRegisterData.role || ""}
-                                    name="role"
-                                    className='rounded-md mt-2'
-                                    id="countries"
-                                    required
-                                    style={{ backgroundColor: 'white', color: 'gray', padding: '10px', height: '55px', border: '1px solid lightgray', outline: 'none', fontSize: '16px', letterSpacing: '.5px', fontWeight: '400', cursor: 'pointer' }}
-                                >
-                                    <option value="" selected>Select Role</option>
-                                    <option value="Business">I want to launch a raffle!</option>
-                                    <option value="Customer"> I want to enter Raffles!</option>
-                                </Select>
-                            </div>
+                                    Enter the Raffle Now!
+                                </Button>
+                                {/* Urgency Message with Countdown Timer */}
+                                <div className="text-center pt-3">
+                                    <p className="text-lg font-medium text-gray-800">
+                                        Spots close in <CountdownTimer />
+                                    </p>
+                                </div>
 
-                            {/* </div> */}
-                        </div>
-                        <div onClick={handleSignUp1Step} className='text-center bg-[#20124C] p-4 rounded-md flex items-center text-white gap-4 font-bold mt-4 cursor-pointer'>
-                            <p className='text-center w-full text-xl font-medium'>Get Started!</p>
-                        </div>
-                        <div className='flex items-center gap-6 justify-center mt-4'>
-                            <svg className='w-20 lg:w-fit' width="182" height="2" viewBox="0 0 182 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="0.196289" y1="0.969971" x2="181.527" y2="0.969971" stroke="#ACACAC" stroke-width="0.5" />
-                            </svg>
-                            <p className='text-gray-400 text-xs lg:text-md'>or continue with</p>
-                            <svg className='w-20 lg:w-fit' width="182" height="2" viewBox="0 0 182 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="0.196289" y1="0.969971" x2="181.527" y2="0.969971" stroke="#ACACAC" stroke-width="0.5" />
-                            </svg>
-                        </div>
-                        {userRegisterData.role && (
-                            <div className='flex items-center justify-around mt-4'>
-                                <GoogleOAuthProvider clientId={clientId}>
-                                    <GoogleLogin
-                                        onSuccess={handleGoogleSignUpSuccess}
-                                        onError={handleGoogleLoginFailure}
-                                        useOneTap
+                                {step === 1 && (
+                                    <>
+                                        <div className="relative py-4">
+                                            <div className="absolute inset-0 flex items-center">
+                                                <span className="w-full border-t border-gray-300" />
+                                            </div>
+                                            <div className="relative flex justify-center text-sm">
+                                                <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                                            </div>
+                                        </div>
+
+                                        {/* Social Login Buttons */}
+                                        <div className="space-y-3">
+                                            <Button
+                                                variant="outline"
+                                                className="w-full h-[40px] font-medium text-gray-600 border border-gray-300 bg-white hover:bg-gray-50"
+                                            >
+                                                <GoogleOAuthProvider clientId={clientId}>
+                                                    <span className="object-contain">
+                                                        <GoogleLogin
+                                                            onSuccess={handleGoogleSignUpSuccess}
+                                                            onError={handleGoogleLoginFailure}
+                                                            useOneTap
+                                                        />
+                                                    </span>
+                                                </GoogleOAuthProvider>
+                                            </Button>
+                                        </div>
+                                    </>
+                                )}
+                                <div className="flex items-center pt-4">
+                                    <Checkbox
+                                        id="marketing"
+                                        name="marketing"
+                                        checked={userRegisterData.opted}
+                                        onCheckedChange={(checked: any) => setUserRegisterData((prev: any) => ({ ...prev, opted: checked as boolean }))}
+                                        className="mr-2"
                                     />
-                                </GoogleOAuthProvider>
-                                {/* <div className="border-[1px] rounded-md px-6 lg:px-12 py-2">
-                                    <FacebookLogin
-                                        appId="8985913114770801"
-                                        fields="name,email,picture"
-                                        callback={handleFacebookResponse}
-                                        cssClass="my-facebook-button-class"
-                                        icon="fa-facebook"
-                                        textButton=""
-                                    />
-                                </div> */}
-                                {/* <div className='border-[1px] rounded-md px-6 lg:px-12 py-2'>
-                                    <img className='w-6' src={apple} alt="apple" />
-                                </div> */}
+                                    <label htmlFor="marketing" className="text-sm text-gray-600">
+                                        Get exclusive raffle updates & prize notifications (Optional)
+                                    </label>
+                                </div>
+
+                                <p className="text-center text-sm text-gray-700 font-medium">
+                                    By creating an account you agree to our{" "}
+                                    <Link to="/terms" className="text-purple-600 underline hover:text-purple-800">
+                                        Terms and Conditions
+                                    </Link>{" "}
+                                    and{" "}
+                                    <Link to="/privacy" className="text-purple-600 underline hover:text-purple-800">
+                                        Privacy Policy
+                                    </Link>
+                                </p>
+
+                                <p className="text-center text-sm text-gray-600 pb-4">
+                                    Already have an account?{" "}
+                                    <Link to="#" onClick={handleSignIn} className="text-purple-600 hover:underline">
+                                        Sign In
+                                    </Link>
+                                </p>
                             </div>
-                        )}
-                        <div className='flex items-center gap-1 justify-center mt-4 text-black'>
-                            <p>Already have an account?</p>
-                            <span onClick={handleSignIn} className='cursor-pointer text-[#EB4C60] text-lg font-bold'>Sign In</span>
                         </div>
-                        <div className='flex flex-col justify-center items-center mt-4 w-fit m-auto text-center'>
-                            <p className='text-xs lg:text-md text-black'>By creating an account, you agree to Raffily's</p>
-                            <p><span className='text-[#EB4C60] text-xs lg:text-md'><a href="/terms-and-conditions"> Terms and Conditions</a>, <a href="/privacy-policy">Privacy Policy</a></span>
-                                &nbsp;<span className='text-xs lg:text-md text-black'>and</span>&nbsp;
-                                <span className='text-[#EB4C60] text-xs lg:text-md'><a href="/cookies">Cookie Policy</a></span></p>
-                        </div>
-                    </Modal.Body>
+                    </div>
+                    {/* </Modal.Body> */}
                 </div>
             </Modal>
-        </div>
+        </>
     )
 }
 

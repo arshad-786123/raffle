@@ -478,114 +478,7 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
     return () => window.removeEventListener('resize', checkMobileView);
   }, []);
 
-  // const images = [
-  //   {
-  //     original: 'https://picsum.photos/800/600?random=1',
-  //     thumbnail: 'https://picsum.photos/100/75?random=1',
-  //   },
-  //   {
-  //     original: 'https://picsum.photos/800/600?random=2',
-  //     thumbnail: 'https://picsum.photos/100/75?random=2',
-  //   },
-  //   {
-  //     original: 'https://picsum.photos/800/600?random=3',
-  //     thumbnail: 'https://picsum.photos/100/75?random=3',
-  //   },
-  //   {
-  //     original: 'https://picsum.photos/800/600?random=4',
-  //     thumbnail: 'https://picsum.photos/100/75?random=4',
-  //   },
-  //   {
-  //     original: 'https://picsum.photos/800/600?random=5',
-  //     thumbnail: 'https://picsum.photos/100/75?random=5',
-  //   },
-  //   {
-  //     original: 'https://picsum.photos/800/600?random=6',
-  //     thumbnail: 'https://picsum.photos/100/75?random=6',
-  //   },
-  //   {
-  //     original: 'https://picsum.photos/800/600?random=7',
-  //     thumbnail: 'https://picsum.photos/100/75?random=7',
-  //   },
-  //   {
-  //     original: 'https://picsum.photos/800/600?random=8',
-  //     thumbnail: 'https://picsum.photos/100/75?random=8',
-  //   },
-  //   {
-  //     original: 'https://picsum.photos/800/600?random=9',
-  //     thumbnail: 'https://picsum.photos/100/75?random=9',
-  //   },
-  //   {
-  //     original: 'https://picsum.photos/800/600?random=10',
-  //     thumbnail: 'https://picsum.photos/100/75?random=10',
-  //   },
-  // ];
-
-  //   const customThumbnailStyles = `
-  //   .image-gallery-thumbnails-container {
-  //     display: flex;
-  //     flex-direction: ${isMobileView ? 'row' : 'column'};
-  //     gap: 8px;
-  //     justify-content: flex-start;
-  //     ${isMobileView ? 'overflow-x: auto; white-space: nowrap;' : 'overflow-y: auto;'}
-  //     ${isMobileView ? 'max-height: 100px;' : 'max-height: 500px;'}
-  //   }
-  //   .image-gallery-thumbnail {
-  //     flex: 0 0 auto; /* Prevent squeezing */
-  //     width: ${isMobileView ? '48px' : '92px'} !important;
-  //     height: ${isMobileView ? '48px' : '92px'} !important;
-  //     transition: all 0.3s ease;
-  //     padding: 2px !important;
-  //     border-radius: 4px;
-  //     background: none; 
-  //     border: none !important;
-  //     outline: none !important;
-  //     box-shadow: none !important;
-  //   }
-
-  //   .image-gallery-thumbnail:hover,
-  //   .image-gallery-thumbnail.active {
-  //     padding: 4px !important;
-  //     background: linear-gradient(55.21deg, #AD6FFF 9.69%, #FD98E8 47.47%, #FF7385 83.78%);
-  //   }
-  //   .image-gallery-thumbnail:hover .image-gallery-thumbnail-image,
-  //   .image-gallery-thumbnail.active .image-gallery-thumbnail-image {
-  //     border-radius: 3px; 
-  //   }
-
-  //   .image-gallery-thumbnail:hover img,
-  //   .image-gallery-thumbnail.active img,
-  //   .image-gallery-thumbnail:hover video,
-  //   .image-gallery-thumbnail.active video 
-  //   {    
-  //     border: 3px solid #fff;
-  //      border-radius: 4px;
-  //   }
-
-  //   .image-gallery-thumbnail .image-gallery-thumbnail-inner {
-  //     display: flex !important;
-  //     position: relative;
-  //     width: 100%;
-  //     height: 100%;
-  //   }
-  //   .image-gallery-thumbnail-image {
-  //     width: 100% !important;
-  //     height: 100% !important;
-  //     object-fit: cover;
-  //     border-radius: 4px;
-
-  //   }
-  //   .image-gallery-thumbnails-wrapper {
-  //     ${isMobileView ? `
-  //       width: 100%;
-  //       overflow-x: auto;
-  //     ` : ''}
-  //   }
-  //   .image-gallery-slide-wrapper {
-  //     margin-bottom: 10px;
-  //   }
-  // `;
-
+  
   const customThumbnailStyles = `
   .image-gallery-thumbnails-container {
     display: flex;
@@ -1186,7 +1079,6 @@ const AboutRaffles: React.FC<AboutRafflesProps> = () => {
                       <Modal.Header className="bg-white  rounded-t-md p-6  pb-0">
                         Free Postal Entry
                       </Modal.Header>
-
                       <Modal.Body className="bg-white text-secondary h-full xs:h-auto rounded-b-md  p-6" style={{ fontFamily: "poppins, sans-serif", color: "black" }}>
                         {/* <h1>Competition Entry Conditions</h1> */}
                         <p>

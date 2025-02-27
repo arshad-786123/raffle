@@ -14,9 +14,10 @@ import { successToast } from '../../../Utils/Toast/success.toast';
 import Cookies from 'js-cookie';
 import { storeUser } from '../../../Redux/User/userSlice';
 import { useDispatch } from 'react-redux';
+import { ArrowLeft } from 'lucide-react';
+import { Button } from '@/Components/ui/button';
 
 const SignUp2Step = ({ authenticationModal, setAuthenticationModal, setUserRegisterData, userRegisterData, userLoginData }: any) => {
-
     const [mobile, setMobile] = useState({
         number: "",
         dialcode: ""
@@ -73,35 +74,6 @@ const SignUp2Step = ({ authenticationModal, setAuthenticationModal, setUserRegis
 
     const [otp, setOtp] = useState('');
 
-    // const handleOwner = async () => {
-
-    //     if (!otp) {
-    //         return errorToast("Please fill the OTP")
-    //     }
-
-    //     if (userRegisterData.email === "") {
-    //         userRegisterData.email = userLoginData.emailOrUsername
-    //     }
-
-    //     const data = { ...userRegisterData, type: "REGISTRATION", code: otp }
-
-    //     const a = await verifyUser(data)
-    //     if (a.success) {
-    //         successToast("Registration Successful");
-    //     } else {
-    //         return errorToast(a.message);
-    //     }
-    //     // navigate("/owner")
-    //     setAuthenticationModal({
-    //         isSignUp1Step: false,
-    //         isSignUp2Step: false,
-    //         isBusinessSignUp1Step: false,
-    //         isForgotPassOpen: false,
-    //         isSignInOpen: true,
-    //         isSignUpOpen: false
-    //     });
-    // }
-
     const dispatch = useDispatch();
 
     const handleOwner = async () => {
@@ -117,13 +89,14 @@ const SignUp2Step = ({ authenticationModal, setAuthenticationModal, setUserRegis
         const data = { ...userRegisterData, type: "REGISTRATION", code: otp };
 
         try {
+            debugger;
             const verifyResult = await verifyUser(data);
 
             if (verifyResult.success) {
                 successToast("Registration Successful");
 
                 console.log("Attempting to log in with:", { emailOrUsername: userRegisterData.email, password: userRegisterData.password });
-
+                debugger;
                 const loginResult = await loginUser({ emailOrUsername: userRegisterData.email, password: userRegisterData.password });
 
                 console.log("Login result:", loginResult);
@@ -207,7 +180,11 @@ const SignUp2Step = ({ authenticationModal, setAuthenticationModal, setUserRegis
     }
 
     // const [countriesData, setCountriesData] = useState<Country[]>([])
+    useEffect(() => {
 
+        setMobile({number: userRegisterData.phone,
+            dialcode: userRegisterData.dialcode,})
+    }, [])
     // useEffect(() => {
     //     const countries = async () => {
     //         const result = await getCountries();
@@ -251,90 +228,84 @@ const SignUp2Step = ({ authenticationModal, setAuthenticationModal, setUserRegis
                 show={authenticationModal.isSignUp2Step}
                 onClose={onClose}
                 popup
+                theme={{
+                    content: {
+                        base: "bg-transparent shadow-none",
+                    },
+                }}
             >
-                <div className='rounded-md'>
-                    <Modal.Header className='bg-white  rounded-t-md' />
+                <div className='rounded-xs'>
+                    {/* <Modal.Body style={{ fontFamily: "poppins, sans-serif" }}> */}
+                    <div style={{ fontFamily: "poppins, sans-serif" }} className="py-2 flex items-center justify-center">
+                        <div className="w-full max-w-md bg-white rounded-lg overflow-hidden">
+                            <div className="px-4 space-y-6">
+                                {/* Header with Back Button and Progress */}
+                                <header className="flex items-center justify-between">
 
-                    <Modal.Body className="bg-white text-secondary  h-full xs:h-auto rounded-b-md" style={{ fontFamily: "poppins, sans-serif" }}>
+                                    <button onClick={() => goBack()} className="p-2 hover:bg-gray-100 rounded-full">
+                                        <ArrowLeft className="w-5 h-5 text-gray-600" />
+                                    </button>
 
-                        <div onClick={goBack} className='cursor-pointer absolute top-4'>
-                            <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9.44033 14.0972C9.85557 14.5178 9.86807 15.213 9.46885 15.6503C9.26416 15.8743 8.99072 15.9872 8.71728 15.9872C8.45713 15.9872 8.19658 15.8854 7.99463 15.6806L1.21611 8.81616C1.01182 8.60964 0.895996 8.32353 0.895996 8.02529C0.895996 7.72601 1.01182 7.44052 1.21611 7.23339L7.99463 0.369592C8.40947 -0.0506281 9.06963 -0.0372585 9.46885 0.399622C9.86807 0.837531 9.85537 1.53276 9.44033 1.95256L3.44385 8.02529L9.44033 14.0972Z" fill="black" />
-                            </svg>
-                        </div>
-                        <div className='mt-2' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>
-                            <h3 className='text-center text-lg font-bold tracking-wider'>Step 2: Verify your account</h3>
-                        </div>
-                        {/* <div className='mt-4'>
-                            <p className='mt-2'>Phone Number</p>
-                            <div className='flex items-center gap-4'>
-                            <div className='w-[28%] flex items-center justify-between gap-4 rounded-md p-2 lg:p-4 border-[1px] mt-2'>
-                                   
-                                    <select onChange={(e) => handleSelectDialCode(e)} value={userRegisterData.dialCode.code} id="countrySelect" className='border-none outline-none w-full cursor-pointer'>
-                                        {
-                                            countriesData?.map((item, i) => (
-                                                <>
-                                                    <option data-name={item.name} data-dialcode={item.dial_code} value={item.code} className='text-start'>{item.code} &nbsp; {item.dial_code}
-                                                        <img src={`https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/${item.code}.svg`} />
-                                                    </option>
-                                                </>
-                                            ))
-                                        }
-                                    </select>
+                                </header>
+                                <div className="text-center space-y-2">
+                                    <h3 className="text-3xl font-bold tracking-tight">Step 2: Verify your account</h3>
                                 </div>
-                                <div className='w-[70%] flex items-center justify-between gap-4 rounded-md p-4 border-[1px] mt-2'>
-                                    <input className='border-none outline-none' type="password" placeholder='Phone' name="email" id="email" />
+                              
+                                <div className='h-[.2px] w-full bg-gray-200 mt-6'></div>
+                                <p className='text-xs lg:text-sm text-center mt-3' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>Please enter 6-digit code that was just sent to your mobile number</p>
+                                <p className='text-sm text-center' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>to {mobile.dialcode}&nbsp;{mobile.number} </p>
+
+                                <div className='hidden lg:flex justify-center mt-6 ' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>
+                                    <OtpInput
+                                        value={otp}
+                                        onChange={setOtp}
+                                        numInputs={6}
+                                        inputType="number"
+                                        renderSeparator={<span></span>}
+                                        renderInput={(props) => <input
+                                            {...props}
+                                            style={{ border: '1px solid #000', width: '60px', height: "60px", marginRight: '10px', textAlign: 'center', borderRadius: '5px' }}
+                                        />}
+                                    />
+                                </div>
+
+
+                                <div className='block lg:hidden flex justify-center mt-6' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>
+                                    <OtpInput
+                                        value={otp}
+                                        onChange={setOtp}
+                                        numInputs={6}
+                                        inputType="number"
+                                        renderSeparator={<span></span>}
+                                        renderInput={(props) => <input
+
+                                            {...props}
+                                            style={{ border: '1px solid #000', width: '40px', height: "40px", marginRight: '10px', textAlign: 'center', borderRadius: '5px' }}
+                                        />}
+                                    />
+                                </div>
+
+                                <div className='flex items-center gap-1 justify-center mt-4'>
+                                    <p className='text-sm text-center' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>Didn't receive a code?</p>
+                                    <span onClick={disableCode ? () => { } : handleResend} className={`${disableCode ? "text-[#E7E7E7E7] cursor-not-allowed" : "text-purple-600 underline hover:text-purple-800 font-bold cursor-pointer"}`} >Resend code</span>
+                                </div>
+                                <Button
+                                    className="w-full h-12 text-lg font-bold bg-purple-700 hover:bg-purple-800 hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-150 text-white"
+                                    onClick={() => { handleOwner() }}
+                                    style={{ fontFamily: "poppins, sans-serif" }}
+                                >
+                                   Verify
+                                </Button>
+                                {/* <div onClick={handleOwner} className='text-center bg-[#20124C] p-4 rounded-md flex items-center text-white gap-4 font-bold mt-4 cursor-pointer'>
+                                    <p className='text-center w-full text-xl font-medium ' style={{ fontFamily: "poppins, sans-serif" }}>Verify</p>
+                                </div> */}
+
+                                <div className=' mt-4 pb-4 w-[100%] m-auto text-center text-xs ' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>
+                                    If you didn’t receive a code please make sure your mobile number is correct and try again.
                                 </div>
                             </div>
-                        </div> */}
-                        <div className='h-[.2px] w-full bg-gray-200 mt-6'></div>
-                        <p className='text-xs lg:text-sm text-center mt-3' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>Please enter 6-digit code that was just sent to your mobile number</p>
-                        <p className='text-sm text-center' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>to {mobile.dialcode}&nbsp;{mobile.number} </p>
-
-
-                        <div className='hidden lg:flex justify-center mt-6 ' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>
-                            <OtpInput
-                                value={otp}
-                                onChange={setOtp}
-                                numInputs={6}
-                                inputType="number"
-                                renderSeparator={<span></span>}
-                                renderInput={(props) => <input
-                                    {...props}
-                                    style={{ border: '1px solid #000', width: '60px', height: "60px", marginRight: '10px', textAlign: 'center', borderRadius: '5px' }}
-                                />}
-                            />
                         </div>
-
-
-                        <div className='block lg:hidden flex justify-center mt-6' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>
-                            <OtpInput
-                                value={otp}
-                                onChange={setOtp}
-                                numInputs={6}
-                                inputType="number"
-                                renderSeparator={<span></span>}
-                                renderInput={(props) => <input
-
-                                    {...props}
-                                    style={{ border: '1px solid #000', width: '40px', height: "40px", marginRight: '10px', textAlign: 'center', borderRadius: '5px' }}
-                                />}
-                            />
-                        </div>
-
-                        <div className='flex items-center gap-1 justify-center mt-4'>
-                            <p className='text-sm text-center' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>Didn't receive a code?</p>
-                            <span onClick={disableCode ? () => { } : handleResend} className={`${disableCode ? "text-[#E7E7E7E7] cursor-not-allowed" : "text-[#EB4C60] font-bold cursor-pointer"}`} >Resend code</span>
-                        </div>
-
-                        <div onClick={handleOwner} className='text-center bg-[#20124C] p-4 rounded-md flex items-center text-white gap-4 font-bold mt-4 cursor-pointer'>
-                            <p className='text-center w-full text-xl font-medium ' style={{ fontFamily: "poppins, sans-serif" }}>Verify</p>
-                        </div>
-
-                        <div className=' mt-4 w-[100%] m-auto text-center text-xs ' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>
-                            If you didn’t receive a code please make sure your mobile number is correct and try again.
-                        </div>
-                    </Modal.Body>
+                    </div>
                 </div>
             </Modal>
         </div>

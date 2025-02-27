@@ -40,14 +40,14 @@ const Index = ({ authenticationModal, setAuthenticationModal }: any) => {
   })
 
   return (
-    <div>
+    <>
       <SignUp setUserRegisterData={setUserRegisterData} userRegisterData={userRegisterData} authenticationModal={authenticationModal} setAuthenticationModal={setAuthenticationModal} />
       <SignIn setUserLoginData={setUserLoginData} userLoginData={userLoginData} authenticationModal={authenticationModal} setAuthenticationModal={setAuthenticationModal} />
       <SignUp1Step setUserRegisterData={setUserRegisterData} userRegisterData={userRegisterData} authenticationModal={authenticationModal} setAuthenticationModal={setAuthenticationModal} />
       <BusinessSignUp1Step setUserRegisterData={setUserRegisterData} userRegisterData={userRegisterData} authenticationModal={authenticationModal} setAuthenticationModal={setAuthenticationModal} />
       <SignUp2Step userLoginData={userLoginData} setUserRegisterData={setUserRegisterData} userRegisterData={userRegisterData} authenticationModal={authenticationModal} setAuthenticationModal={setAuthenticationModal} />
       <ForgotPassword authenticationModal={authenticationModal} setAuthenticationModal={setAuthenticationModal} />
-    </div>
+    </>
   )
 }
 
