@@ -247,7 +247,7 @@ const SignUp1Step = ({ authenticationModal, setAuthenticationModal, setUserRegis
                                     </svg>
                                 </div> */}
                                 <div className="text-center space-y-2">
-                                    <h3 className="text-3xl font-bold tracking-tight">Step 1: Complete your information</h3>
+                                    <h3 className="text-2xl font-bold tracking-tight">Step 1 :&nbsp; Complete your information</h3>
                                 </div>
                                 {/* <div className='mt-2' style={{ color: "black", fontFamily: "poppins, sans-serif" }}>
                                     <h3 className='text-center text-md lg:text-lg font-bold tracking-wider'>Step 1: Complete your information</h3>
