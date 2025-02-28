@@ -33,6 +33,7 @@ const FreeRaffleEntryForm: React.FC<FreeRaffleEntryFormProps> = ({
     useEffect(()=>{
         console.log(raffleId);
     },[])
+    
     const handleSign2Step = async () => {
         try {
             if (userRegisterData.firstname === "") {

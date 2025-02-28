@@ -12,8 +12,6 @@ import { forgotPassword } from '../../../Services/Authentication/forgotPassword'
 
 const ForgotPasword = ({ authenticationModal, setAuthenticationModal }: any) => {
 
-
-
     const onClose = (): void => {
         setAuthenticationModal({
             isSignUp1Step: false,

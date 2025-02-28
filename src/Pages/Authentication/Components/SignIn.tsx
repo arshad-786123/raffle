@@ -18,6 +18,7 @@ import { successToast } from '../../../Utils/Toast/success.toast';
 import FacebookLogin from 'react-facebook-login';
 import { Button } from '@/Components/ui/button';
 import { ArrowLeft, Check, Lock, PartyPopper } from 'lucide-react';
+import GoogleLoginButton from './GoogleLoginButton';
 
 interface SignInProps {
     authenticationModal: any;
@@ -328,7 +329,7 @@ const SignIn: React.FC<SignInProps> = ({ authenticationModal, setAuthenticationM
             >
                 <div className='rounded-xs'>
                     {/* <Modal.Body style={{ fontFamily: "poppins, sans-serif" }}> */}
-                    <div style={{ fontFamily: "poppins, sans-serif" }} className="py-6 flex items-center justify-center py-4">
+                    <div style={{ fontFamily: "poppins, sans-serif" }} className="py-3 flex items-center justify-center py-4">
                         <div className="w-full max-w-md bg-white rounded-lg overflow-hidden">
                             <div className="px-4 space-y-6">
                                 {/* Header with Back Button and Progress */}
@@ -417,6 +418,9 @@ const SignIn: React.FC<SignInProps> = ({ authenticationModal, setAuthenticationM
                                             </span>
                                         </GoogleOAuthProvider>
                                     </Button>
+                                    {/* <GoogleOAuthProvider clientId={clientId}>
+                                        <GoogleLoginButton setAuthenticationModal={setAuthenticationModal} userLoginData={userLoginData} setUserLoginData={setUserLoginData} onFailure={onFailure} onSuccess={onSuccess} authenticationModal={authenticationModal} />
+                                    </GoogleOAuthProvider> */}
                                 </div>
                                 {/* <div className='flex items-center justify-around mt-4'>
                                     <GoogleOAuthProvider clientId={clientId}>

@@ -186,7 +186,7 @@ const BusinessSignUp1Step = ({
       >
         <div className='rounded-xs'>
           {/* <Modal.Body style={{ fontFamily: "poppins, sans-serif" }}> */}
-          <div style={{ fontFamily: "poppins, sans-serif" }} className="py-6 flex items-center justify-center py-4">
+          <div style={{ fontFamily: "poppins, sans-serif" }} className="py-3 flex items-center justify-center py-4">
             <div className="w-full max-w-md bg-white rounded-lg overflow-hidden">
               <div className="px-4 space-y-6">
                 {/* Header with Back Button and Progress */}

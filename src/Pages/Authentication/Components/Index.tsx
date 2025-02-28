@@ -10,7 +10,6 @@ import BusinessSignUp1Step from './BusinessSignUp1Step'
 
 const Index = ({ authenticationModal, setAuthenticationModal }: any) => {
 
-
   const [userRegisterData, setUserRegisterData] = useState<UserRegister>({
     email: "",
     role: "",
